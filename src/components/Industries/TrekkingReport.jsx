@@ -1,64 +1,125 @@
-import React from 'react'
+import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const TrekkingReport = () => {
-    const navigate = useNavigate();
-    return (
-        <>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between p-4">
-                {/* Heading */}
-                <div>
-                    <h3 className="font-bold text-[25px] ml-[5px]">Trekking Industry Reports</h3>
-                    <Link
-                        to="/tourism"
-                        className="mt-2 inline-flex items-center gap-2 px-5 py-2 bg-white text-blue-600 rounded-full border border-blue-500 hover:bg-blue-200 transition"
-                    >
-                        All
-                        <RxCross1 size={18} />
-                    </Link>
-                </div>
+  const navigate = useNavigate();
+  return (
+    <>
+      <div className="font-general-sans mx-4 ">
+        <ul className="flex items-center  space-x-2 text-sm md:text-base  mt-3 mb-0 md:mb-3">
+          <li>
+            <Link to="/" className="text-stone-400 cursor:pointer">
+              Home
+            </Link>
+          </li>
+          <li>
+            <IoIosArrowForward />
+          </li>
+          <li>
+            <Link to="/industries" className="text-stone-400 cursor:pointer">
+              Industries
+            </Link>
+          </li>
+          <li>
+            <IoIosArrowForward />
+          </li>
+          <li className="text-stone-400 cursor:pointer">Tourism</li>
+          <li>
+            <IoIosArrowForward />
+          </li>
+          <li className="text-stone-900 cursor:pointer">
+            Trekking Industry Report
+          </li>
+        </ul>
 
-                {/* Search Bar */}
-                <div className="relative w-full md:w-1/3 mt-3 md:mt-0">
-                    <input
-                        type="text"
-                        placeholder="Looking for something specific?"
-                        className="w-full px-4 pr-10 py-2 border rounded-full bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    />
-                    <CiSearch
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                        size={20}
-                    />
-                </div>
+        <div className="flex  h-[100vh] max-w-full gap-6 ">
+          {/* -----------------------------Left side ( Title, Filter view, Lists of pages )----------------------------- */}
+          <div className="w-[90rem]">
+            <div>
+              {/*  ------------title----------------- */}
+              <h3 className="font-medium text-[48px] ">
+                Trekking Industry Reports
+              </h3>
+              <Link
+                to="/tourism"
+                className="mt-3 inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition"
+              >
+                All
+                <RxCross1 size={18} />
+              </Link>
             </div>
-            
-            {/* Card */}
-            <div className="flex flex-col md:flex-row gap-6 w-full md:w-[1000px]  p-4 md:p-0">
-                <div className="flex-1 bg-blue-100 rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 md:ml-5">
-                    <h2 className="text-xl font-bold mb-2 pt-3">Trekking Arrivals Vs Tourist Arrival</h2>
-                    <div className="flex items-start justify-between">
-                        <p className="text-gray-600">
-                            In 2024, trekking tourist arrivals reached 28,894, up 322% from 2023,
-                            while total tourist arrivals grew 13%, highlighting a strong surge in trekking interest.
-                        </p>
-                        <button
-                            onClick={() => navigate("/data")}
-                            className="ml-4"
-                        >
-                            <img src="/Arrow.svg" alt="Arrow" className="w-16 h-16 md:w-25 md:h-25 relative -translate-y-8 cursor-pointer" />
-                        </button>
-                    </div>
-                </div>
 
-                {/* Filter */}
-                <div className="ml-0 md:ml-auto mt-4 md:mt-0 bg-white border border-gray-300 rounded-lg px-6 py-4 w-full md:w-auto">
-                    <h1 className="font-bold text-lg text-gray-700">Filter</h1>
+            {/*  ----------------------------- Card  ----------------------------- */}
+
+            <div className="flex items-center mt-5 bg-blue-100 rounded-xl  p-6 hover:shadow-sm transition-shadow duration-300 ">
+              <div className="flex flex-col">
+                <h1 className="text-3xl font-medium mb-2 pt-3">
+                  Trekking Arrivals Vs Tourist Arrival
+                </h1>
+                <p className="text-slate-500 mr-16">
+                  In 2024, trekking tourist arrivals reached 28,894, up 322%
+                  from 2023, while total tourist arrivals grew 13%, highlighting
+                  a strong surge in trekking interest.
+                </p>
+                <div className="flex gap-3">
+                  <Link
+                    to=""
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-1  text-black rounded-full border border-black hover:bg-blue-200 transition"
+                  >
+                    People
+                  </Link>
+                  <Link
+                    to=""
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-1  text-black rounded-full border border-black hover:bg-blue-200 transition"
+                  >
+                    Year
+                  </Link>
+                  <Link
+                    to=""
+                    className="mt-3 inline-flex items-center gap-2 px-4 py-1  text-black rounded-full border border-black hover:bg-blue-200 transition"
+                  >
+                    Basic Plan
+                  </Link>
                 </div>
+              </div>
+
+              <div>
+                <button onClick={() => navigate("/data")} className="">
+                  <img
+                    src="/Arrow.svg"
+                    alt="Arrow"
+                    className=" bg-primary-blue w-[10rem]  cursor-pointer"
+                  />
+                </button>
+              </div>
             </div>
-        </>
-    )
-}
+          </div>
+          {/* -----------------------------right side ( search bar and filter )----------------------------- */}
 
-export default TrekkingReport
+          <div className=" w-1/2">
+            {/* --------------------------Search Bar -------------------------- */}
+            <div className="w-full flex  border-0 rounded-full bg-blue-100 items-center px-5 py-2  ">
+              <input
+                type="text"
+                placeholder="Looking for something specific?"
+                className="w-full px-4 pr-10 py-2 text-[0.9rem] text-slate-600   focus:outline-none "
+              />
+              <CiSearch className=" text-black-400" size={20} />
+            </div>
+
+            {/* --------------------------Filter-=---------------------------- */}
+
+            <div className="   mt-4 bg-white border border-slate-200 rounded-sm px-5 py-4 w-full h-full">
+              <h1 className="font-medium text-[1.5rem] text-black">Filters</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default TrekkingReport;
