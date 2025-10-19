@@ -19,6 +19,7 @@ const Tourism = () => {
   }, []);
   return (
     <>
+    <div className="wrapper">
       <div className="p-6">
         <h1 className="text-3xl font-bold mb-4">Tourism Industry Research</h1>
         <p>
@@ -201,6 +202,7 @@ const Tourism = () => {
             <p className="text-gray-500 text-sm mt-3">Loading latest report...</p>
           )}
         </div>
+      </div>
       </div>
     </>
   );
