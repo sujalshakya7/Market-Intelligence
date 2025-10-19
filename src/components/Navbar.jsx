@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav>
       {/* ---------------------------------- container ---------------------------------- */}
-      <div className="mx-4 flex justify-between items-center py-4 font-general-sans">
+      <div className=" wrapper flex justify-between items-center font-general-sans">
         {/* ---------------------------------- Left ---------------------------------- */}
         <div className="">
           <img src="/logo.svg" alt="Logo" className=" object-cover  " />
