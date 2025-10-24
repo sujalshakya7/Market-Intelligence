@@ -317,7 +317,7 @@ const Home = () => {
         </div>
 
         {/* Right Content */}
-        <div className="sm:w-1/2 w-full flex flex-col justify-center items-center sm:items-start">
+        <div className="sm:w-1/2 w-full flex flex-col justify-center items-center sm:items-end sm:ml-auto">
           <p className="text-sm md:text-base mb-2">Stay up to date</p>
 
           <div className="bg-white rounded-full flex flex-wrap items-center justify-between w-full max-w-md p-1.5">
