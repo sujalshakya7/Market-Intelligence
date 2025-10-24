@@ -8,7 +8,7 @@ const TrekkingReport = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="font-general-sans mx-4 ">
+      <div className="wrapper2 font-general-sans  ">
         <ul className="flex items-center  space-x-2 text-sm md:text-base  mt-3 mb-0 md:mb-3">
           <li>
             <Link to="/" className="text-stone-400 cursor:pointer">
