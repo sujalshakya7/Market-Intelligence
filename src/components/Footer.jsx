@@ -7,7 +7,7 @@ import { FiYoutube } from "react-icons/fi";
 
 function Footer() {
   return (
-    <footer className="wrapper font-general-sans mt-20">
+    <footer className="wrapper2 font-general-sans mt-20">
       {/* Top Section */}
       <div className="flex flex-col lg:flex-row justify-between xs:gap-10 sm:gap-5 lg:gap-20">
         {/* Left Section */}
