@@ -30,7 +30,7 @@ const Navbar = () => {
       }`}
     >
       {/* ---------------------------------- container ---------------------------------- */}
-      <div className=" max-w-7xl mx-auto px-6 flex justify-between items-center font-general-sans  ">
+      <div className="wrapper2 max-w-7xl mx-auto px-6 flex justify-between items-center font-general-sans  ">
         {/* ---------------------------------- Left ---------------------------------- */}
         <div className="  ">
           <Link to="/">

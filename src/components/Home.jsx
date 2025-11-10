@@ -57,8 +57,8 @@ const blog = [
 
 const Home = () => {
   return (
-    <div className=" wrapper  font-general-sans overflow-hidden ">
-      <div className="relative w-full h-screen">
+    <div className=" wrapper2  font-general-sans overflow-hidden ">
+      <div className="relative w-full h-[45rem]">
         {/* Background Image */}
         <img
           src="/background.svg"
@@ -303,7 +303,7 @@ const Home = () => {
       </div>
 
       {/* Subscribe Section */}
-      <div className="w-full overflow-hidden mt-20 mb-32 bg-primary px-6 py-10 text-white rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-10 md:gap-14">
+      <div className="w-full overflow-hidden mt-20 mb-32 bg-primary px-6 py-10 text-white rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-10 md:gap-14">
         {/* Left Content */}
         <div className="sm:w-1/2 flex flex-col gap-4 text-center sm:text-left">
           <h1 className="text-2xl md:text-4xl font-semibold leading-tight">
@@ -317,7 +317,7 @@ const Home = () => {
         </div>
 
         {/* Right Content */}
-        <div className="sm:w-1/2 w-full flex flex-col justify-center items-center sm:items-start">
+        <div className="md:w-1/2 w-full flex flex-col justify-center items-center md:items-end ">
           <p className="text-sm md:text-base mb-2">Stay up to date</p>
 
           <div className="bg-white rounded-full flex flex-wrap items-center justify-between w-full max-w-md p-1.5">
