@@ -13,7 +13,7 @@ const TrekkingReport = () => {
 
   // Map API keys to URLs
   const datasetAPIs = {
-    2: "https://ezexplanation.com/api/intel/article/dataset/trekking/",
+    2: "https://ezexplanation.com/api/intel/article/dataset/trekking-arrival-vs-tourist-arrival/",
     3: "https://ezexplanation.com/api/intel/article/dataset/trekking-gears/",
     4: "https://ezexplanation.com/api/intel/article/dataset/trekking-news/",
   };
