@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const TrekkingReport = () => {
@@ -125,13 +126,6 @@ const TrekkingReport = () => {
                       {item.article?.abstract || "No description available."}
                     </p>
                     <div className="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
-                      <a
-                        href={`https://ezexplanation.com${item.dataset}`}
-                        download
-                        className="text-blue-500 hover:text-blue-700 text-sm underline"
-                      >
-                        Download File
-                      </a>
                       <span className="text-gray-500 text-xs">
                         {item.created_at
                           ? new Date(item.created_at).toLocaleDateString("en-US", {
@@ -141,6 +135,11 @@ const TrekkingReport = () => {
                           })
                           : ""}
                       </span>
+
+                      <button className="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full hover:bg-blue-600 transition inline-flex items-center gap-2">
+                        View Report
+                        <FaArrowRightLong size={14} />
+                      </button>
                     </div>
                   </div>
                 ))}
