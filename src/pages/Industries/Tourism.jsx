@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TourismChart from "./Tourism/TourismChart";
 
 const Tourism = () => {
   const navigate = useNavigate();
@@ -198,6 +199,7 @@ const Tourism = () => {
           );
         })}
       </div>
+     
     </div>
   );
 };

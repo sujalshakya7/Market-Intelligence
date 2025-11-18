@@ -1,0 +1,122 @@
+[
+  {
+    "Year": 2015,
+    "Total Tourist Arrivals": 538970,
+    "Trekking Tourist Arrivals": 9679,
+    "Total Treking Revenue in Million NRS": 234,
+    "Total Tourism Revenue in NRS Million": 41765.3,
+    "GDP in percentage": 2.2,
+    "Average Length of Stay (days)": 13.16,
+    "Average Revenue per Tourist": 77493,
+    "Trekking Demand (%)": 1.8,
+    "Trekking Revenue Share (%)": 0.57
+  },
+  {
+    "Year": 2016,
+    "Total Tourist Arrivals": 753002,
+    "Trekking Tourist Arrivals": 23569,
+    "Total Treking Revenue in Million NRS": 417.65,
+    "Total Tourism Revenue in NRS Million": 58526.9,
+    "GDP in percentage": 1.6,
+    "Average Length of Stay (days)": 13.4,
+    "Average Revenue per Tourist": 77709,
+    "Trekking Demand (%)": 3.14,
+    "Trekking Revenue Share (%)": 0.72
+  },
+  {
+    "Year": 2017,
+    "Total Tourist Arrivals": 940218,
+    "Trekking Tourist Arrivals": 29993,
+    "Total Treking Revenue in Million NRS": 440,
+    "Total Tourism Revenue in NRS Million": 68521.7,
+    "GDP in percentage": 1.9,
+    "Average Length of Stay (days)": 12.6,
+    "Average Revenue per Tourist": 72877,
+    "Trekking Demand (%)": 3.2,
+    "Trekking Revenue Share (%)": 0.65
+  },
+  {
+    "Year": 2018,
+    "Total Tourist Arrivals": 1173072,
+    "Trekking Tourist Arrivals": 28876,
+    "Total Treking Revenue in Million NRS": 522,
+    "Total Tourism Revenue in NRS Million": 75374.1,
+    "GDP in percentage": 2,
+    "Average Length of Stay (days)": 12.4,
+    "Average Revenue per Tourist": 64290,
+    "Trekking Demand (%)": 2.47,
+    "Trekking Revenue Share (%)": 0.7
+  },
+  {
+    "Year": 2019,
+    "Total Tourist Arrivals": 1197191,
+    "Trekking Tourist Arrivals": 24079,
+    "Total Treking Revenue in Million NRS": 686,
+    "Total Tourism Revenue in NRS Million": 60885,
+    "GDP in percentage": 2,
+    "Average Length of Stay (days)": 12.7,
+    "Average Revenue per Tourist": 50865,
+    "Trekking Demand (%)": 2.02,
+    "Trekking Revenue Share (%)": 1.13
+  },
+  {
+    "Year": 2020,
+    "Total Tourist Arrivals": 230085,
+    "Trekking Tourist Arrivals": 692,
+    "Total Treking Revenue in Million NRS": 20,
+    "Total Tourism Revenue in NRS Million": 7266.3,
+    "GDP in percentage": 1.6,
+    "Average Length of Stay (days)": 15.1,
+    "Average Revenue per Tourist": 31580,
+    "Trekking Demand (%)": 0.31,
+    "Trekking Revenue Share (%)": 0.28
+  },
+  {
+    "Year": 2021,
+    "Total Tourist Arrivals": 150962,
+    "Trekking Tourist Arrivals": 2326,
+    "Total Treking Revenue in Million NRS": 100,
+    "Total Tourism Revenue in NRS Million": 32447.2,
+    "GDP in percentage": 0.2,
+    "Average Length of Stay (days)": 15.5,
+    "Average Revenue per Tourist": 21511,
+    "Trekking Demand (%)": 1.55,
+    "Trekking Revenue Share (%)": 0.31
+  },
+  {
+    "Year": 2022,
+    "Total Tourist Arrivals": 614869,
+    "Trekking Tourist Arrivals": 15781,
+    "Total Treking Revenue in Million NRS": 480,
+    "Total Tourism Revenue in NRS Million": 61522.7,
+    "GDP in percentage": 0.7,
+    "Average Length of Stay (days)": 13.1,
+    "Average Revenue per Tourist": 100106,
+    "Trekking Demand (%)": 2.57,
+    "Trekking Revenue Share (%)": 0.79
+  },
+  {
+    "Year": 2023,
+    "Total Tourist Arrivals": 1014882,
+    "Trekking Tourist Arrivals": 6854,
+    "Total Treking Revenue in Million NRS": 580,
+    "Total Tourism Revenue in NRS Million": 82326.6,
+    "GDP in percentage": 1.1,
+    "Average Length of Stay (days)": 13.2,
+    "Average Revenue per Tourist": 81171,
+    "Trekking Demand (%)": 0.68,
+    "Trekking Revenue Share (%)": 0.71
+  },
+  {
+    "Year": 2024,
+    "Total Tourist Arrivals": 1147548,
+    "Trekking Tourist Arrivals": 28894,
+    "Total Treking Revenue in Million NRS": 665,
+    "Total Tourism Revenue in NRS Million": 49214.6,
+    "GDP in percentage": 1.4,
+    "Average Length of Stay (days)": 13.3,
+    "Average Revenue per Tourist": 42895,
+    "Trekking Demand (%)": 2.52,
+    "Trekking Revenue Share (%)": 1.36
+  }
+]

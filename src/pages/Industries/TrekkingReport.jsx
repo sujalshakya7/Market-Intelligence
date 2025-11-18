@@ -64,13 +64,13 @@ const TrekkingReport = () => {
       <ul className="flex items-center space-x-2 text-sm md:text-base mt-3 mb-0 md:mb-3">
         <li><Link to="/" className="text-stone-400">Home</Link></li>
         <li><IoIosArrowForward /></li>
-        <li><Link to="/industries" className="text-stone-400">Industries</Link></li>
-        <li><IoIosArrowForward /></li>
-        <li className="text-stone-400">Tourism</li>
+        {/* <li><Link to="/industries" className="text-stone-400">Industries</Link></li>
+        <li><IoIosArrowForward /></li> */}
+        <li><Link to="/tourism" className="text-stone-400">Tourism</Link></li>
         <li><IoIosArrowForward /></li>
         <li className="text-stone-900">Trekking Industry Report</li>
       </ul>
-
+          
       <div className="flex h-auto max-w-full gap-6 flex-col">
         <div className="w-full">
           <h3 className="font-medium text-[36px] mb-6">
@@ -136,9 +136,15 @@ const TrekkingReport = () => {
                           : ""}
                       </span>
 
-                      <button className="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full hover:bg-blue-600 transition inline-flex items-center gap-2">
-                        View Report
-                        <FaArrowRightLong size={14} />
+                      <button
+                        onClick={() =>
+                          navigate("/data", {
+                            state: { apiKey: item.article?.id },
+                          })
+                        }
+                        className="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full hover:bg-blue-600 transition inline-flex items-center gap-2"
+                      >
+                        View Report <FaArrowRightLong size={14} />
                       </button>
                     </div>
                   </div>
