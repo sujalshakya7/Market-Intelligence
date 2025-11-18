@@ -7,7 +7,7 @@ import { FiYoutube } from "react-icons/fi";
 
 function Footer() {
   return (
-    <footer className="wrapper font-general-sans mt-20">
+    <footer className="wrapper2 py-15 font-general-sans flex flex-col gap-10 bg-white px-4 md:px-8 lg:px-16">
       {/* Top Section */}
       <div className="flex flex-col lg:flex-row justify-between xs:gap-10 sm:gap-5 lg:gap-20">
         {/* Left Section */}
@@ -17,33 +17,33 @@ function Footer() {
             We provide market data and insights to help you make better business
             decisions.
           </p>
-          <button className="bg-primary rounded-full px-8 py-5 flex items-center gap-3 text-white hover:bg-primary/90 transition text-sm md:text-base">
+          <button className="bg-primary rounded-md px-8 py-5 mt-3 flex items-center gap-3 text-md text-white hover:bg-primary/90 transition  md:text-base">
             Explore Industries
-            <GoArrowUpRight className="w-5 h-5" />
+        
           </button>
         </div>
 
         {/* Right Section (Links) */}
-        <div className="flex   xs:flex-wrap sm:justify-between xs:gap-10  sm:gap-5 text-sm md:text-base w-full lg:w-2/3">
+        <div className="flex  sm:flex lg:justify-end  xs:flex-wrap xs:gap-10 sm:justify-between   sm:gap-5 text-sm md:text-base w-full ">
           {/* Quick Links */}
-          <div className="flex flex-col gap-3 min-w-[150px]">
+          <div className="flex flex-col gap-3 min-w-[150px] mr-10">
             <h2 className="h2 text-lg font-semibold mb-2">Quick Links</h2>
             <Link to="/">Helping You Decide</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/pricing">Pricing</Link>
-            <Link to="/solutions">FAQ & Support</Link>
+            <Link to="/coming">Blog</Link>
+            <Link to="/coming">Pricing</Link>
+            <Link to="/coming">FAQ & Support</Link>
           </div>
 
           {/* Solutions */}
-          <div className="flex flex-col gap-3 min-w-[150px]">
+          <div className="flex flex-col gap-3 min-w-[150px] mr-10 ">
             <h2 className="h2 text-lg font-semibold mb-2">Solutions</h2>
-            <Link to="/">Market Intelligence Dashboard</Link>
-            <Link to="/blog">Brand Performance Analytics</Link>
-            <Link to="/pricing">On Demand Data Collection</Link>
+            <Link to="/coming">Market Intelligence Dashboard</Link>
+            <Link to="/coming">Brand Performance Analytics</Link>
+            <Link to="/coming">On Demand Data Collection</Link>
           </div>
 
           {/* Get in Touch */}
-          <div className="flex flex-col gap-3 min-w-[150px]  lg:items-start">
+          <div className="flex flex-col gap-3 min-w-[150px]  lg:items-start ">
             <h2 className="h2 text-lg font-semibold mb-2">Get in Touch</h2>
             <Link to="mailto:infography@gmail.com" className="hover:underline">
               infography@gmail.com
@@ -56,13 +56,13 @@ function Footer() {
                 <FaLinkedinIn />
               </Link>
               <Link
-                to="/twitter"
+                to="/coming"
                 className="p-2 bg-primary text-white rounded-sm hover:bg-primary/90 transition"
               >
                 <FaXTwitter />
               </Link>
               <Link
-                to="/youtube"
+                to="/coming"
                 className="p-2 bg-primary text-white rounded-sm hover:bg-primary/90 transition"
               >
                 <FiYoutube />
