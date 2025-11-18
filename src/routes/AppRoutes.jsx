@@ -9,7 +9,7 @@ import Solutions from "../pages/Solutions/Solutions"
 import Navbar from "../components/Navigation/Navbar"
 import Footer from "../components/Navigation/Footer"
 import Blog from "../pages/Blog/Blog"
-import { Data } from "../pages/Industries/Data";
+import Data from "../pages/Industries/Data";
 import { Navigate } from "react-router-dom";
 const AppRoutes = () => {
   return (
