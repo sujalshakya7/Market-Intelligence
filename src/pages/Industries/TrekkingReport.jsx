@@ -137,9 +137,15 @@ const TrekkingReport = () => {
                           : ""}
                       </span>
 
-                      <button className="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full hover:bg-blue-600 transition inline-flex items-center gap-2">
-                        View Report
-                        <FaArrowRightLong size={14} />
+                      <button
+                        onClick={() =>
+                          navigate("/data", {
+                            state: { apiKey: item.article?.id },
+                          })
+                        }
+                        className="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full hover:bg-blue-600 transition inline-flex items-center gap-2"
+                      >
+                        View Report <FaArrowRightLong size={14} />
                       </button>
                     </div>
                   </div>

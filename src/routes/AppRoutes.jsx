@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import Home from "../pages/Home/Home";
+
 import Industries from "../pages/Industries/Industries";
 import Tourism from "../pages/Industries/Tourism";
 import TrekkingReport from "../pages/Industries/TrekkingReport";
@@ -10,8 +11,8 @@ import Navbar from "../components/Navigation/Navbar";
 import Footer from "../components/Navigation/Footer";
 import Blog from "../pages/Blog/Blog";
 import Coming from "../pages/Coming";
+import Data from "../pages/Industries/Data";
 
-import { Data } from "../pages/Industries/Data";
 import { Navigate } from "react-router-dom";
 const AppRoutes = () => {
   return (
