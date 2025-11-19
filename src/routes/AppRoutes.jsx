@@ -1,20 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from 'react'
+import React from "react";
 import Home from "../pages/Home/Home";
-import Industries from "../pages/Industries/Industries"
-import Tourism from "../pages/Industries/Tourism"
-import TrekkingReport from "../pages/Industries/TrekkingReport"
-import Pricing from "../pages/Pricing/Pricing"
-import Solutions from "../pages/Solutions/Solutions"
-import Navbar from "../components/Navigation/Navbar"
-import Footer from "../components/Navigation/Footer"
-import Blog from "../pages/Blog/Blog"
+
+import Industries from "../pages/Industries/Industries";
+import Tourism from "../pages/Industries/Tourism";
+import TrekkingReport from "../pages/Industries/TrekkingReport";
+import Pricing from "../pages/Pricing/Pricing";
+import Solutions from "../pages/Solutions/Solutions";
+import Navbar from "../components/Navigation/Navbar";
+import Footer from "../components/Navigation/Footer";
+import Blog from "../pages/Blog/Blog";
+import Coming from "../pages/Coming";
 import Data from "../pages/Industries/Data";
+
 import { Navigate } from "react-router-dom";
 const AppRoutes = () => {
   return (
     <>
-     <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,13 +29,12 @@ const AppRoutes = () => {
           <Route path="/tourism" element={<Tourism />} />
           <Route path="/trekking-reports" element={<TrekkingReport />} />
           <Route path="/data" element={<Data />} />
+          <Route path="/coming" element={<Coming />} />
         </Routes>
         <Footer />
       </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default AppRoutes
-
-
+export default AppRoutes;

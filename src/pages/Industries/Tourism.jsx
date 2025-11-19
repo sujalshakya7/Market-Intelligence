@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Breadcrumb from "../../components/Navigation/Breadcrumb";
 import TourismChart from "./Tourism/TourismChart";
 
 const Tourism = () => {
@@ -77,15 +78,19 @@ const Tourism = () => {
   }, []);
 
   return (
-     <div className=" wrapper2 py-32 font-general-sans overflow-hidden ">
-      <div className="p-6">
-        <h1 className="text-3xl font-bold mb-4">Tourism Industry Research</h1>
-        <p>
+    <div className=" wrapper2 py-20 bg-slate-100  font-general-sans overflow-hidden ">
+      <Breadcrumb />
+      <div className="py-6">
+        <h1 className="text-4xl font-medium mb-4">Tourism Industry Research</h1>
+        <p className="max-w-4xl text-gray-700">
           Infography Technologies provides reliable data and research across
-          industries to help you stay informed and ahead of the competition.
+          industries, helping businesses make informed decisions. Our insights
+          keep you ahead of market trends, identify opportunities, and
+          anticipate challenges, ensuring you stay competitive in a rapidly
+          changing business environment.
         </p>
-
       </div>
+      <h1 className="text-4xl font-medium mb-8">Tourism Categories</h1>
       {/* Filter ko part */}
       <div className="mb-5 flex justify-between items-center pl-5 pr-5 mt-3">
         <div className="flex gap-5">
@@ -100,13 +105,21 @@ const Tourism = () => {
           </button>
         </div>
         <div className="flex gap-3 items-center">
-          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition" style={{ borderColor: "oklch(0.6209 0.1802 257.04)", color: "oklch(0.6209 0.1802 257.04)", }} >
-            <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" /> Filter By </button> <button className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
+          <button
+            className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
+            style={{
+              borderColor: "oklch(0.6209 0.1802 257.04)",
+              color: "oklch(0.6209 0.1802 257.04)",
+            }}
+          >
+            <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
+            Filter By{" "}
+          </button>{" "}
+          <button className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
             Download Report
           </button>
         </div>
       </div>
-
 
       <div className="flex flex-col md:flex-row gap-6 w-full">
         {cardsConfig.map((card) => {
@@ -116,44 +129,52 @@ const Tourism = () => {
           return (
             <div
               key={card.articleId}
-              className="flex-1 bg-blue-100 rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+              className="flex flex-col justify-between bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition-shadow duration-300"
             >
               {isLoading ? (
-                <p className="text-gray-500 text-sm mt-3 animate-pulse">
+                <p className="text-gray-500 text-xl mt-3 animate-pulse">
                   Loading report data...
                 </p>
               ) : article ? (
                 <>
-                  <h2 className="text-xl font-bold mb-2 pt-3">
+                  <h2 className="text-xl font-medium mb-2 ">
                     {article.title}
                   </h2>
-                  <p className="text-gray-600">{article.abstract}</p>
-                  <hr className="border-t-2 border-black mt-4" />
+                  <p className="font-regular text-sm text-gray-600">
+                    {article.abstract}
+                  </p>
+                  <hr className="border-t-2 border-slate-100 mt-4" />
 
-                  <h2 className="pt-7 font-bold">Recently Added Reports</h2>
-                  <ul className="mt-3 space-y-4">
+                  <h2 className="pt-7 text-sm font-medium">Recently Reports</h2>
+                  <div className="flex justify-between mt-2">
+                            
+                            <span className="text-gray-500 text-xs block">
+                              Report Title
+                            </span>
+                              <span className="text-gray-500 text-xs block">
+                              Date
+                            </span>
+                          
+                          </div>
+                  <ul className="flex flex-col mt-3 space-y-4">
                     {article.datasets && article.datasets.length > 0 ? (
                       article.datasets.map((datasetItem) => (
                         <li
                           key={datasetItem.id}
-                          className="flex justify-between items-start"
+                          className=" justify-between items-start"
                         >
-                          <div>
-                            <span className="text-gray-500 text-xs block">
-                              Report Title
-                            </span>
+                          <div className="flex flex-col">
+                            <hr className="border-t-2 border-slate-100  mb-2" />
+                          
+                         
+                          <div className=" flex  justify-between">
                             <a
                               href={`https://ezexplanation.com${datasetItem.dataset}`}
                               download
-                              className="font-medium text-blue-500 hover:text-blue-800 cursor-pointer"
+                              className="font-regular w-[10rem] text-blue-500 hover:text-blue-800 cursor-pointer"
                             >
                               {datasetItem.article?.title || "Untitled Report"}
                             </a>
-                          </div>
-                          <div className="text-right">
-                            <span className="text-gray-500 text-xs block">
-                              Date
-                            </span>
                             <span className="text-gray-500 text-sm">
                               {new Date(
                                 datasetItem.created_at
@@ -164,6 +185,7 @@ const Tourism = () => {
                               })}
                             </span>
                           </div>
+                          </div>
                         </li>
                       ))
                     ) : (
@@ -173,7 +195,7 @@ const Tourism = () => {
                     )}
                   </ul>
 
-                  <hr className="border-t-2 border-gray-300 mt-4" />
+                  <hr className="border-t-2 border-gray-100 mt-4" />
                   <div className="mt-6 flex justify-end">
                     <button
                       onClick={() =>
@@ -188,7 +210,6 @@ const Tourism = () => {
                       View All
                     </button>
                   </div>
-
                 </>
               ) : (
                 <p className="text-red-500 text-sm mt-3">

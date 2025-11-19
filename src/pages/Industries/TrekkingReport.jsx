@@ -3,6 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import Breadcrumb from "../../components/Navigation/Breadcrumb";
 
 const TrekkingReport = () => {
   const navigate = useNavigate();
@@ -59,25 +60,17 @@ const TrekkingReport = () => {
   }, [reportData]);
 
   return (
-    <div className="wrapper2 h-[45rem] py-32 font-general-sans">
+    <div className="wrapper2 py-20 font-general-sans bg-slate-100 ">
       {/* Breadcrumb */}
-      <ul className="flex items-center space-x-2 text-sm md:text-base mt-3 mb-0 md:mb-3">
-        <li><Link to="/" className="text-stone-400">Home</Link></li>
-        <li><IoIosArrowForward /></li>
-        {/* <li><Link to="/industries" className="text-stone-400">Industries</Link></li>
-        <li><IoIosArrowForward /></li> */}
-        <li><Link to="/tourism" className="text-stone-400">Tourism</Link></li>
-        <li><IoIosArrowForward /></li>
-        <li className="text-stone-900">Trekking Industry Report</li>
-      </ul>
-          
-      <div className="flex h-auto max-w-full gap-6 flex-col">
+      <Breadcrumb />
+
+      <div className="flex h-auto max-w-full gap-6 flex-col mt-4">
         <div className="w-full">
-          <h3 className="font-medium text-[36px] mb-6">
+          <h3 className="font-medium text-4xl">
             {reportData?.title || "Trekking Industry Reports"}
           </h3>
 
-          <div className="mb-5 flex justify-between items-center px-5 mt-3">
+          <div className="flex justify-between items-center mt-8">
             {/* Left buttons */}
             <div className="flex gap-5">
               <button
@@ -98,9 +91,13 @@ const TrekkingReport = () => {
             <div className="flex gap-3 items-center">
               <button
                 className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
-                style={{ borderColor: "oklch(0.6209 0.1802 257.04)", color: "oklch(0.6209 0.1802 257.04)" }}
+                style={{
+                  borderColor: "oklch(0.6209 0.1802 257.04)",
+                  color: "oklch(0.6209 0.1802 257.04)",
+                }}
               >
-                <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" /> Filter By
+                <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
+                Filter By
               </button>
               <button className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
                 Download Report
@@ -108,31 +105,35 @@ const TrekkingReport = () => {
             </div>
           </div>
 
-
-          <div className="p-6">
+          <div className="mt-8 mb-20">
             {loading ? (
-              <p className="text-gray-500 text-center mt-10 text-lg">Loading dataset...</p>
+              <p className="text-gray-500 text-center mt-10 text-lg">
+                Loading dataset...
+              </p>
             ) : dataset.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {dataset.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300"
+                    className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300"
                   >
-                    <h2 className="text-xl font-semibold mb-2">
+                    <h2 className="text-[1.6rem] font-medium mb-4">
                       {item.article?.title || "Untitled Report"}
                     </h2>
                     <p className="text-gray-600 mb-4 text-sm line-clamp-3">
                       {item.article?.abstract || "No description available."}
                     </p>
-                    <div className="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
-                      <span className="text-gray-500 text-xs">
+                    <div className="flex justify-between items-end border-t border-gray-300 pt-3 mt-10">
+                      <span className="text-gray-500 text-xs  ">
                         {item.created_at
-                          ? new Date(item.created_at).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })
+                          ? new Date(item.created_at).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
+                              }
+                            )
                           : ""}
                       </span>
 
