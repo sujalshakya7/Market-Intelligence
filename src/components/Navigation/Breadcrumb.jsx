@@ -9,7 +9,7 @@ function Breadcrumb() {
         <li><Link to="/" className="text-stone-400">Home</Link></li>
         <li><IoIosArrowForward className="text-stone-400" /></li>
 
-        <li><Link to="/industries" className="text-stone-400">Industries</Link></li>
+        <li className="text-stone-400">Industries</li>
         <li><IoIosArrowForward className="text-stone-400" /></li>
 
         <li className="text-stone-400">Tourism</li>

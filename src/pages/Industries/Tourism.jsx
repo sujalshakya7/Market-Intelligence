@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Breadcrumb from "../../components/Navigation/Breadcrumb";
 import TourismChart from "./Tourism/TourismChart";
 
@@ -94,13 +94,11 @@ const Tourism = () => {
       {/* Filter ko part */}
       <div className="mb-5 flex justify-between items-center pl-5 pr-5 mt-3">
         <div className="flex gap-5">
-          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
+          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black">
             All
           </button>
-          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
-            Popular
-          </button>
-          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
+         
+          <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black">
             Recently Updated
           </button>
         </div>
@@ -115,9 +113,7 @@ const Tourism = () => {
             <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
             Filter By{" "}
           </button>{" "}
-          <button className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
-            Download Report
-          </button>
+          
         </div>
       </div>
 
@@ -147,15 +143,15 @@ const Tourism = () => {
 
                   <h2 className="pt-7 text-sm font-medium">Recently Reports</h2>
                   <div className="flex justify-between mt-2">
-                            
-                            <span className="text-gray-500 text-xs block">
-                              Report Title
-                            </span>
-                              <span className="text-gray-500 text-xs block">
-                              Date
-                            </span>
-                          
-                          </div>
+
+                    <span className="text-gray-500 text-xs block">
+                      Report Title
+                    </span>
+                    <span className="text-gray-500 text-xs block">
+                      Date
+                    </span>
+
+                  </div>
                   <ul className="flex flex-col mt-3 space-y-4">
                     {article.datasets && article.datasets.length > 0 ? (
                       article.datasets.map((datasetItem) => (
@@ -165,26 +161,26 @@ const Tourism = () => {
                         >
                           <div className="flex flex-col">
                             <hr className="border-t-2 border-slate-100  mb-2" />
-                          
-                         
-                          <div className=" flex  justify-between">
-                            <a
-                              href={`https://ezexplanation.com${datasetItem.dataset}`}
-                              download
-                              className="font-regular w-[10rem] text-blue-500 hover:text-blue-800 cursor-pointer"
-                            >
-                              {datasetItem.article?.title || "Untitled Report"}
-                            </a>
-                            <span className="text-gray-500 text-sm">
-                              {new Date(
-                                datasetItem.created_at
-                              ).toLocaleDateString("en-US", {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                              })}
-                            </span>
-                          </div>
+
+
+                            <div className=" flex  justify-between">
+                              <div
+                                
+                                className="font-regular w-[10rem] text-blue-500  cursor-pointer"
+                              >
+                                {datasetItem.article?.title || "Untitled Report"}
+                              </div>
+
+                              <span className="text-gray-500 text-sm">
+                                {new Date(
+                                  datasetItem.created_at
+                                ).toLocaleDateString("en-US", {
+                                  month: "short",
+                                  day: "numeric",
+                                  year: "numeric",
+                                })}
+                              </span>
+                            </div>
                           </div>
                         </li>
                       ))
@@ -220,7 +216,7 @@ const Tourism = () => {
           );
         })}
       </div>
-     
+
     </div>
   );
 };

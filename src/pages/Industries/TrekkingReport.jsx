@@ -99,7 +99,9 @@ const TrekkingReport = () => {
                 <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
                 Filter By
               </button>
-              <button className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
+              <button 
+               onClick={() => navigate("/data", { state: { apiKey: 2 } })}
+              className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition">
                 Download Report
               </button>
             </div>
