@@ -51,7 +51,7 @@ const Navbar = () => {
         fixed top-0 left-0 w-full backdrop-blur-2xl bg-white shadow-sm z-50
         transition-all duration-500
         ${show ? "translate-y-0" : "-translate-y-full"}
-        ${isIndustryHover || isSolutionHover ? "h-auto" : "h-[5rem]"}
+        ${isIndustryHover || isSolutionHover ? "h-auto" : "h-fit"}
       `}
       onMouseLeave={() => {
         setIsIndustryHover(false);
@@ -59,406 +59,408 @@ const Navbar = () => {
       }}
     >
       {/* TOP NAVBAR */}
-      <div className="wrapper2 max-w-7xl mx-auto px-6 flex justify-between items-center font-general-sans h-[5rem]">
-        {/* Logo */}
-        <Link to="/">
-          <img src="/logolong.svg" className="xs:w-24 sm:w-auto" alt="Logo" />
-        </Link>
+      <section className="wrapper">
+        <div className="flex justify-between items-center font-general-sans">
+          {/* Logo */}
+          <Link to="/">
+            <img src="/logolong.svg" className="xs:w-24 sm:w-auto" alt="Logo" />
+          </Link>
 
-        {/* HAMBURGER ICON */}
-        <div className="lg:hidden">
-          <RxHamburgerMenu
-            className="w-8 h-8 cursor-pointer"
+          {/* HAMBURGER ICON */}
+          <div className="lg:hidden">
+            <RxHamburgerMenu
+              className="w-8 h-8 cursor-pointer"
+              onClick={() => {
+                setIsSideMenuOpen(true);
+                document.body.style.overflow = "hidden"; // Disable scrolling
+              }}
+            />
+          </div>
+
+          {/* BACKDROP CLICK TO CLOSE */}
+          <div
+            className={`
+      fixed inset-0  z-40 transition-all duration-300 lg:hidden
+      ${isSideMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+    `}
             onClick={() => {
-              setIsSideMenuOpen(true);
-              document.body.style.overflow = "hidden"; // Disable scrolling
+              setIsSideMenuOpen(false);
+              document.body.style.overflow = "auto";
             }}
-          />
-        </div>
+          ></div>
 
-        {/* BACKDROP CLICK TO CLOSE */}
-        <div
-          className={`
-    fixed inset-0  z-40 transition-all duration-300 lg:hidden
-    ${isSideMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}
-  `}
-          onClick={() => {
-            setIsSideMenuOpen(false);
-            document.body.style.overflow = "auto";
-          }}
-        ></div>
-
-        {/* SLIDING SIDE MENU FROM RIGHT */}
-        <div
-          className={`
-   fixed top-0 bottom-0 right-0 w-80 h-screen bg-white z-50 shadow-xl
-    transition-transform duration-300 lg:hidden
-    translate-x-0
-    ${isSideMenuOpen ? "translate-x-0" : "translate-x-full"}
-  `}
-        >
-          {/* CLOSE BUTTON */}
-          <button
-            className="absolute top-4 right-4 text-3xl cursor-pointer"
-            onClick={() => {
-              setIsSideMenuOpen(false); // Close the menu
-              document.body.style.overflow = "auto"; // Re-enable scrolling
-            }}
+          {/* SLIDING SIDE MENU FROM RIGHT */}
+          <div
+            className={`
+    fixed top-0 bottom-0 right-0 w-80 h-screen bg-white z-50 shadow-xl
+      transition-transform duration-300 lg:hidden
+      translate-x-0
+      ${isSideMenuOpen ? "translate-x-0" : "translate-x-full"}
+    `}
           >
-            ×
-          </button>
-
-          {/* MENU ITEMS */}
-          <div className="pt-20 px-6 flex flex-col space-y-6 text-gray-700 bg-white ">
-            <Link
-              to="/"
-              className="py-3 border-b border-gray-100"
+            {/* CLOSE BUTTON */}
+            <button
+              className="absolute top-4 right-4 text-3xl cursor-pointer"
               onClick={() => {
-                setIsSideMenuOpen(false);
-                document.body.style.overflow = "auto";
+                setIsSideMenuOpen(false); // Close the menu
+                document.body.style.overflow = "auto"; // Re-enable scrolling
               }}
             >
-              Helping You Decide
-            </Link>
+              ×
+            </button>
 
-            {/* SOLUTIONS SUBMENU */}
-            <div>
-              <button
-                className="py-3 border-b border-gray-100 w-full text-left flex justify-between items-center"
-                onClick={() => toggleSubmenu("solutions")}
-              >
-                Solutions
-                <FaAngleDown
-                  className={`transition-transform ${
-                    openSubmenu === "solutions" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {openSubmenu === "solutions" && (
-                <div className="ml-4 mt-2 space-y-4 py-2">
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <PiChartBarHorizontal className="text-blue-600 w-6 h-6" />
-                      <span className="font-semibold">
-                        Market Intelligence Dashboard
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 ml-9">
-                      Real-time market insights in one place
-                    </p>
-                  </Link>
-
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <BiTachometer className="text-blue-600 w-6 h-6" />
-                      <span className="font-semibold">
-                        Brand Performance Analytics
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 ml-9">
-                      Measure your brand's position and growth
-                    </p>
-                  </Link>
-
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <HiOutlineUserGroup className="text-blue-600 w-6 h-6" />
-                      <span className="font-semibold">
-                        On Demand Data Collection
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 ml-9">
-                      Tailored data collection for your goals
-                    </p>
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* INDUSTRIES SUBMENU BUTTON */}
-            <div>
-              <button
-                className="py-3 border-b border-gray-100 w-full text-left flex justify-between items-center"
-                onClick={() => toggleSubmenu("industries")}
-              >
-                Industries
-                <FaAngleDown
-                  className={`transition-transform ${
-                    openSubmenu === "industries" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {openSubmenu === "industries" && (
-                <div className="ml-4 mt-2 space-y-2 py-2">
-                  <Link
-                    to="/tourism"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Tourism
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Technology
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Finance
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Healthcare
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Media
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Education
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Energy
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Food & Beverage
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Agriculture
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Automobile
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Insurance
-                  </Link>
-                  <Link
-                    to="/coming"
-                    className="block py-2 px-4  rounded-lg"
-                    onClick={() => {
-                      setIsSideMenuOpen(false);
-                      document.body.style.overflow = "auto";
-                    }}
-                  >
-                    Logistics
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* NORMAL LINKS */}
-            <Link
-              to="/coming"
-              className="py-3 border-b border-gray-100"
-              onClick={() => {
-                setIsSideMenuOpen(false);
-                document.body.style.overflow = "auto";
-              }}
-            >
-              Blog
-            </Link>
-
-            <Link
-              to="/coming"
-              className="py-3 border-b border-gray-100"
-              onClick={() => {
-                setIsSideMenuOpen(false);
-                document.body.style.overflow = "auto";
-              }}
-            >
-              Pricing
-            </Link>
-
-            {/* AUTH BUTTONS */}
-            <div className="flex flex-col gap-3 pt-4">
+            {/* MENU ITEMS */}
+            <div className="pt-20 px-6 flex flex-col space-y-6 text-gray-700 bg-white ">
               <Link
-                to="/coming"
-                className="py-3 px-4 text-center border border-slate-300 bg-white rounded-sm hover:border-primary transition-all"
+                to="/"
+                className="py-3 border-b border-gray-100"
                 onClick={() => {
                   setIsSideMenuOpen(false);
                   document.body.style.overflow = "auto";
                 }}
+              >
+                Helping You Decide
+              </Link>
+
+              {/* SOLUTIONS SUBMENU */}
+              <div>
+                <button
+                  className="py-3 border-b border-gray-100 w-full text-left flex justify-between items-center"
+                  onClick={() => toggleSubmenu("solutions")}
+                >
+                  Solutions
+                  <FaAngleDown
+                    className={`transition-transform ${
+                      openSubmenu === "solutions" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {openSubmenu === "solutions" && (
+                  <div className="ml-4 mt-2 space-y-4 py-2">
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <PiChartBarHorizontal className="text-blue-600 w-6 h-6" />
+                        <span className="font-semibold">
+                          Market Intelligence Dashboard
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 ml-9">
+                        Real-time market insights in one place
+                      </p>
+                    </Link>
+
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <BiTachometer className="text-blue-600 w-6 h-6" />
+                        <span className="font-semibold">
+                          Brand Performance Analytics
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 ml-9">
+                        Measure your brand's position and growth
+                      </p>
+                    </Link>
+
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <HiOutlineUserGroup className="text-blue-600 w-6 h-6" />
+                        <span className="font-semibold">
+                          On Demand Data Collection
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 ml-9">
+                        Tailored data collection for your goals
+                      </p>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* INDUSTRIES SUBMENU BUTTON */}
+              <div>
+                <button
+                  className="py-3 border-b border-gray-100 w-full text-left flex justify-between items-center"
+                  onClick={() => toggleSubmenu("industries")}
+                >
+                  Industries
+                  <FaAngleDown
+                    className={`transition-transform ${
+                      openSubmenu === "industries" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {openSubmenu === "industries" && (
+                  <div className="ml-4 mt-2 space-y-2 py-2">
+                    <Link
+                      to="/tourism"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Tourism
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Technology
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Finance
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Healthcare
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Media
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Education
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Energy
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Food & Beverage
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Agriculture
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Automobile
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Insurance
+                    </Link>
+                    <Link
+                      to="/coming"
+                      className="block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      Logistics
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* NORMAL LINKS */}
+              <Link
+                to="/coming"
+                className="py-3 border-b border-gray-100"
+                onClick={() => {
+                  setIsSideMenuOpen(false);
+                  document.body.style.overflow = "auto";
+                }}
+              >
+                Blog
+              </Link>
+
+              <Link
+                to="/coming"
+                className="py-3 border-b border-gray-100"
+                onClick={() => {
+                  setIsSideMenuOpen(false);
+                  document.body.style.overflow = "auto";
+                }}
+              >
+                Pricing
+              </Link>
+
+              {/* AUTH BUTTONS */}
+              <div className="flex flex-col gap-3 pt-4">
+                <Link
+                  to="/coming"
+                  className="py-3 px-4 text-center border border-slate-300 bg-white rounded-sm hover:border-primary transition-all"
+                  onClick={() => {
+                    setIsSideMenuOpen(false);
+                    document.body.style.overflow = "auto";
+                  }}
+                >
+                  Sign In
+                </Link>
+
+                <Link
+                  to="/coming"
+                  className="py-3 px-4 text-center bg-primary text-white rounded-sm hover:bg-blue-800"
+                  onClick={() => {
+                    setIsSideMenuOpen(false);
+                    document.body.style.overflow = "auto";
+                  }}
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop menu */}
+          <div className="hidden lg:flex space-x-8 text-gray-600 text-sm items-center h-full">
+            <Link to="/" className="hover:text-gray-900">
+              Helping You Decide
+            </Link>
+
+            {/* SOLUTIONS MENU */}
+            <div className="relative">
+              <button
+                className="hover:text-gray-900 flex items-center gap-2"
+                onClick={() => {
+                  setIsSolutionHover((prev) => !prev);
+                  setIsIndustryHover(false);
+                }}
+                onMouseEnter={() => {
+                  setIsSolutionHover(true);
+                  setIsIndustryHover(false);
+                }}
+              >
+                Solutions
+                <FaAngleDown
+                  className={`transition-transform duration-300 ${
+                    isSolutionHover ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Industries Button */}
+            <button
+              className="hover:text-gray-900 flex items-center gap-2"
+              onClick={() => {
+                setIsIndustryHover((prev) => !prev);
+                setIsSolutionHover(false);
+              }}
+              onMouseEnter={() => {
+                setIsIndustryHover(true);
+                setIsSolutionHover(false);
+              }}
+            >
+              Industries
+              <FaAngleDown
+                className={`transition-transform duration-300 ${
+                  isIndustryHover ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+
+            <Link to="/coming" className="hover:text-gray-900">
+              Blog
+            </Link>
+            <Link to="/coming" className="hover:text-gray-900">
+              Pricing
+            </Link>
+
+            <div className="flex h-10 items-center gap-4">
+              <Link
+                to="/coming"
+                className="py-3 px-4 h-full flex items-center text-black border border-slate-300 bg-white/60 rounded-sm hover:border-primary hover:bg-slate-100 transition-all duration-300"
               >
                 Sign In
               </Link>
 
               <Link
                 to="/coming"
-                className="py-3 px-4 text-center bg-primary text-white rounded-sm hover:bg-blue-800"
-                onClick={() => {
-                  setIsSideMenuOpen(false);
-                  document.body.style.overflow = "auto";
-                }}
+                className="py-3 px-3 flex items-center h-full bg-primary text-white rounded-sm hover:bg-blue-800"
               >
                 Get Started
               </Link>
             </div>
           </div>
         </div>
-
-        {/* Desktop menu */}
-        <div className="hidden lg:flex space-x-8 text-gray-600 text-sm items-center h-full">
-          <Link to="/" className="hover:text-gray-900">
-            Helping You Decide
-          </Link>
-
-          {/* SOLUTIONS MENU */}
-          <div className="relative">
-            <button
-              className="hover:text-gray-900 flex items-center gap-2"
-              onClick={() => {
-                setIsSolutionHover((prev) => !prev);
-                setIsIndustryHover(false);
-              }}
-              onMouseEnter={() => {
-                setIsSolutionHover(true);
-                setIsIndustryHover(false);
-              }}
-            >
-              Solutions
-              <FaAngleDown
-                className={`transition-transform duration-300 ${
-                  isSolutionHover ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-          </div>
-
-          {/* Industries Button */}
-          <button
-            className="hover:text-gray-900 flex items-center gap-2"
-            onClick={() => {
-              setIsIndustryHover((prev) => !prev);
-              setIsSolutionHover(false);
-            }}
-            onMouseEnter={() => {
-              setIsIndustryHover(true);
-              setIsSolutionHover(false);
-            }}
-          >
-            Industries
-            <FaAngleDown
-              className={`transition-transform duration-300 ${
-                isIndustryHover ? "rotate-180" : "rotate-0"
-              }`}
-            />
-          </button>
-
-          <Link to="/coming" className="hover:text-gray-900">
-            Blog
-          </Link>
-          <Link to="/coming" className="hover:text-gray-900">
-            Pricing
-          </Link>
-
-          <div className="flex h-10 items-center gap-4">
-            <Link
-              to="/coming"
-              className="py-3 px-4 h-full flex items-center text-black border border-slate-300 bg-white/60 rounded-sm hover:border-primary hover:bg-slate-100 transition-all duration-300"
-            >
-              Sign In
-            </Link>
-
-            <Link
-              to="/coming"
-              className="py-3 px-3 flex items-center h-full bg-primary text-white rounded-sm hover:bg-blue-800"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* EXPANDED AREA WHEN SOLUTIONS HOVER/CHECKED */}
       {isSolutionHover && (

@@ -1,4 +1,3 @@
-
 import TourismChart from "./Tourism/TourismChart";
 import { useLocation } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
@@ -17,15 +16,12 @@ const Data = () => {
 
   return (
     <div>
-     
       {/* <h1>Tourism VS Trekking</h1> */}
       {apiKey === 2 && <TourismChart />}
-       {apiKey === 3 && <GearChart />}
-      {apiKey === 4 && <NewsChart />} 
+      {apiKey === 3 && <GearChart />}
+      {apiKey === 4 && <NewsChart />}
     </div>
   );
 };
 
 export default Data;
-
-
