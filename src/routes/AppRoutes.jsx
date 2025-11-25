@@ -27,8 +27,8 @@ const AppRoutes = () => {
           {/* <Route path="/industries" element={<Industries />} /> */}
 
           <Route path="/tourism" element={<Tourism />} />
-          <Route path="/trekking-reports" element={<TrekkingReport />} />
-          <Route path="/data" element={<Data />} />
+          <Route path="/tourism/trekking-reports" element={<TrekkingReport />} />
+          <Route path="/tourism/trekking-reports/data" element={<Data />} />
           <Route path="/coming" element={<Coming />} />
         </Routes>
         <Footer />

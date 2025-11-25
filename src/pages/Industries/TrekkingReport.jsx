@@ -105,7 +105,7 @@ const TrekkingReport = () => {
                   Filter By
                 </button>
                 <button
-                  onClick={() => navigate("/data", { state: { apiKey: 2 } })}
+                  onClick={() => navigate("/tourism/trekking-reports/data", { state: { apiKey: 2 } })}
                   className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition"
                 >
                   Download Report
@@ -147,7 +147,7 @@ const TrekkingReport = () => {
 
                         <button
                           onClick={() =>
-                            navigate("/data", {
+                            navigate("/tourism/trekking-reports/data", {
                               state: { apiKey: item.article?.id },
                             })
                           }
