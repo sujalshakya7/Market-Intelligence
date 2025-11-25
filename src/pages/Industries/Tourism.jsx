@@ -197,7 +197,7 @@ const Tourism = () => {
                     <div className="mt-6 flex justify-end">
                       <button
                         onClick={() =>
-                          navigate("/trekking-reports", {
+                          navigate("/tourism/trekking-reports", {
                             state: {
                               reportData: {
                                 ...article,

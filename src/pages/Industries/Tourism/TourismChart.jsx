@@ -14,6 +14,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import Breadcrumb from "../../../components/Navigation/Breadcrumb";
 
 ChartJS.register(
   CategoryScale,
@@ -124,31 +125,7 @@ const TourismChart = () => {
   return (
     <>
       <section className="wrapper my-20">
-        <ul className="flex items-center space-x-2 text-sm md:text-base mt-3 mb-0 md:mb-3">
-          <li>
-            <Link to="/" className="text-stone-400">
-              Home
-            </Link>
-          </li>
-          <li>
-            <IoIosArrowForward />
-          </li>
-          <li>
-            <Link to="/tourism" className="text-stone-400">
-              Tourism
-            </Link>
-          </li>
-          <li>
-            <IoIosArrowForward />
-          </li>
-          <li className="text-stone-400">Trekking Industry Report</li>
-          <li>
-            <IoIosArrowForward />
-          </li>
-          <li className="text-stone-900">
-            Trekking Arrival VS Tourist Arrival
-          </li>
-        </ul>
+        <Breadcrumb/>
 
         <h1 className="font-general-sans font-semibold xs:text-xl md:text-3xl my-6">
           Trekking Arrival VS Tourist Arrival
