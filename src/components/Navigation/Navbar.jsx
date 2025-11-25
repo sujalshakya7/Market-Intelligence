@@ -5,7 +5,18 @@ import { FaAngleDown } from "react-icons/fa6";
 import { PiChartBarHorizontal } from "react-icons/pi";
 import { BiTachometer } from "react-icons/bi";
 import { HiOutlineUserGroup } from "react-icons/hi";
-
+import { MdCardTravel } from "react-icons/md";
+import { GrTechnology } from "react-icons/gr";
+import { FaMoneyCheck } from "react-icons/fa";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
+import { LuContainer } from "react-icons/lu";
+import { MdOutlinePermMedia } from "react-icons/md";
+import { IoCarSportOutline } from "react-icons/io5";
+import { TbBuildingFactory } from "react-icons/tb";
+import { TbPlant } from "react-icons/tb";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { LuHandCoins } from "react-icons/lu";
+import { RiShakeHandsLine } from "react-icons/ri";
 const Navbar = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
@@ -456,7 +467,7 @@ const Navbar = () => {
           onMouseLeave={() => setIsSolutionHover(false)}
         >
           <div className="flex justify-between">
-            <div className="flex gap-8">
+            <div className="flex gap-5">
               <div className="w-[20rem]">
                 <h1 className="text-xl font-semibold">Our Solution</h1>
                 <p className="mt-5 text-slate-600">
@@ -524,7 +535,7 @@ const Navbar = () => {
           onMouseLeave={() => setIsIndustryHover(false)}
         >
           <div className="flex justify-between">
-            <div className="flex gap-8">
+            <div className="flex gap-5">
               <div className="w-[15rem]">
                 <img
                   src="/industries.png"
@@ -538,98 +549,102 @@ const Navbar = () => {
                   decisions.
                 </p>
               </div>
-              <hr className="ml-15 w-[0.1rem] h-auto bg-slate-300 rounded-full"></hr>
+              <hr className="mx-25 w-[0.1rem] h-auto bg-slate-300 rounded-full"></hr>
             </div>
 
-            <div className="flex gap-x-30 text-gray-700 text-[1rem]">
+            <div className="grid grid-cols-3 gap-x-10 text-gray-700 text-[1rem] w-full">
               <div className="flex flex-col">
                 <Link
                   to="/tourism"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Tourism
+                  <div className="flex items-center  gap-5">
+                    <MdCardTravel />
+                    Tourism
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Technology
+                  <div className="flex items-center  gap-5">
+                    <GrTechnology />
+                    Technology
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Finance
+                  <div className="flex items-center  gap-5">
+                    <LuHandCoins />
+                    Finance
+                  </div>
                 </Link>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full">
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Healthcare
+                  <div className="flex items-center  gap-5">
+                    <MdOutlineHealthAndSafety />
+                    Health Care
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Media
+                  <div className="flex items-center  gap-5">
+                    <LuContainer />
+                    Custom Logistics
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Education
-                </Link>
-              </div>
-
-              <div className="flex flex-col">
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  Energy
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  Food & Beverage
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  Agriculture
+                  <div className="flex items-center  gap-5">
+                    <RiShakeHandsLine />
+                    Insurance
+                  </div>
                 </Link>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full">
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Automobile
+                  <div className="flex items-center  gap-5">
+                    <IoFastFoodOutline />
+                    Food & Beverage
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Insurance
+                  <div className="flex items-center  gap-5">
+                    <TbPlant />
+                    Agriculture
+                  </div>
                 </Link>
 
                 <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  Logistics
+                  <div className="flex items-center  gap-5">
+                    <TbBuildingFactory />
+                    Energy
+                  </div>
                 </Link>
               </div>
             </div>
