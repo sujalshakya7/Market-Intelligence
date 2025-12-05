@@ -14,11 +14,15 @@ import Coming from "../pages/Coming";
 import Data from "../pages/Industries/Data";
 
 import { Navigate } from "react-router-dom";
+import ImportExport from "../pages/Industries/Custom Logistics/ImportExport";
+import ImportExportData from "../pages/Industries/Custom Logistics/ImportExportData";
+import GoogleAnalytics from "../GoogleAnalytics";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <GoogleAnalytics />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
@@ -29,6 +33,9 @@ const AppRoutes = () => {
           <Route path="/tourism" element={<Tourism />} />
           <Route path="/tourism/trekking-reports" element={<TrekkingReport />} />
           <Route path="/tourism/trekking-reports/data" element={<Data />} />
+          <Route path="/customlogistics" element={<ImportExport />} />
+         <Route path="/customlogistics/import-and-export-report" element={<ImportExportData />} />
+
           <Route path="/coming" element={<Coming />} />
         </Routes>
         <Footer />

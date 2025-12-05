@@ -135,7 +135,6 @@ const Navbar = () => {
                     }`}
                   />
                 </button>
-
                 {openSubmenu === "solutions" && (
                   <div className="ml-4 mt-2 space-y-4 py-2">
                     <Link
@@ -325,7 +324,7 @@ const Navbar = () => {
                       Insurance
                     </Link>
                     <Link
-                      to="/coming"
+                      to="/customlogistics"
                       className="block py-2 px-4  rounded-lg"
                       onClick={() => {
                         setIsSideMenuOpen(false);
@@ -598,7 +597,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  to="/coming"
+                  to="/customlogistics"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
                   <div className="flex items-center  gap-5">
