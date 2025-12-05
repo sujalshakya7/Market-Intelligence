@@ -31,10 +31,16 @@ const AppRoutes = () => {
           {/* <Route path="/industries" element={<Industries />} /> */}
 
           <Route path="/tourism" element={<Tourism />} />
-          <Route path="/tourism/trekking-reports" element={<TrekkingReport />} />
+          <Route
+            path="/tourism/trekking-reports"
+            element={<TrekkingReport />}
+          />
           <Route path="/tourism/trekking-reports/data" element={<Data />} />
           <Route path="/customlogistics" element={<ImportExport />} />
-         <Route path="/customlogistics/import-and-export-report" element={<ImportExportData />} />
+          <Route
+            path="/customlogistics/import-and-export-report"
+            element={<ImportExportData />}
+          />
 
           <Route path="/coming" element={<Coming />} />
         </Routes>

@@ -83,7 +83,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row justify-between  sm:text-left gap-5 py-5 text-sm md:text-base text-gray-600">
-          <p>&copy; 2025 Infography Technology, All Rights Reserved</p>
+          <p>&copy; 2025 Infography Technologies, All Rights Reserved</p>
           <div className="flex justify-between gap-4">
             <Link to="/" className="hover:underline">
               Terms & Conditions
