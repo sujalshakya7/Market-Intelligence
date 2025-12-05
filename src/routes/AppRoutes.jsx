@@ -14,11 +14,8 @@ import Coming from "../pages/Coming";
 import Data from "../pages/Industries/Data";
 
 import { Navigate } from "react-router-dom";
-<<<<<<< HEAD
-=======
 import ImportExport from "../pages/Industries/Custom Logistics/ImportExport";
 import ImportExportData from "../pages/Industries/Custom Logistics/ImportExportData";
->>>>>>> a18d7eed27d13aa94ac6fc4cc657303fa4d205d3
 import GoogleAnalytics from "../GoogleAnalytics";
 const AppRoutes = () => {
   return (
@@ -34,10 +31,16 @@ const AppRoutes = () => {
           {/* <Route path="/industries" element={<Industries />} /> */}
 
           <Route path="/tourism" element={<Tourism />} />
-          <Route path="/tourism/trekking-reports" element={<TrekkingReport />} />
+          <Route
+            path="/tourism/trekking-reports"
+            element={<TrekkingReport />}
+          />
           <Route path="/tourism/trekking-reports/data" element={<Data />} />
           <Route path="/customlogistics" element={<ImportExport />} />
-         <Route path="/customlogistics/import-and-export-report" element={<ImportExportData />} />
+          <Route
+            path="/customlogistics/import-and-export-report"
+            element={<ImportExportData />}
+          />
 
           <Route path="/coming" element={<Coming />} />
         </Routes>
