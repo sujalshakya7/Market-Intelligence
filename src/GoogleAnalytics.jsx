@@ -13,10 +13,14 @@ const GoogleAnalytics = () => {
   }, []);
 
   useEffect(() => {
+<<<<<<< HEAD
     ReactGA.send({
       hitType: "pageview",
       page: location.pathname + location.search,
     });
+=======
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+>>>>>>> a18d7eed27d13aa94ac6fc4cc657303fa4d205d3
   }, [location]);
 
   return null;
