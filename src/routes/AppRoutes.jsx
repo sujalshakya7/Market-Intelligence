@@ -14,11 +14,13 @@ import Coming from "../pages/Coming";
 import Data from "../pages/Industries/Data";
 
 import { Navigate } from "react-router-dom";
+import GoogleAnalytics from "../GoogleAnalytics";
 const AppRoutes = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <GoogleAnalytics />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
