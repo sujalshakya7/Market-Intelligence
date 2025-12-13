@@ -130,9 +130,8 @@ const Navbar = () => {
                 >
                   Solutions
                   <FaAngleDown
-                    className={`transition-transform ${
-                      openSubmenu === "solutions" ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform ${openSubmenu === "solutions" ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {openSubmenu === "solutions" && (
@@ -205,9 +204,8 @@ const Navbar = () => {
                 >
                   Industries
                   <FaAngleDown
-                    className={`transition-transform ${
-                      openSubmenu === "industries" ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform ${openSubmenu === "industries" ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
@@ -215,15 +213,27 @@ const Navbar = () => {
                   <div className="ml-4 mt-2 space-y-2 py-2">
                     <Link
                       to="/tourism"
-                      className="block py-2 px-4  rounded-lg"
+                      className="flex items-center gap-2 block py-2 px-4  rounded-lg"
                       onClick={() => {
                         setIsSideMenuOpen(false);
                         document.body.style.overflow = "auto";
                       }}
                     >
-                      Tourism
+                      <MdCardTravel />
+                      <span>Tourism</span>
                     </Link>
                     <Link
+                      to="/customlogistics"
+                      className=" flex items-center gap-2 block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      <LuContainer />
+                      Custom Logistics
+                    </Link>
+                    {/* <Link
                       to="/coming"
                       className="block py-2 px-4  rounded-lg"
                       onClick={() => {
@@ -322,17 +332,8 @@ const Navbar = () => {
                       }}
                     >
                       Insurance
-                    </Link>
-                    <Link
-                      to="/customlogistics"
-                      className="block py-2 px-4  rounded-lg"
-                      onClick={() => {
-                        setIsSideMenuOpen(false);
-                        document.body.style.overflow = "auto";
-                      }}
-                    >
-                      Logistics
-                    </Link>
+                    </Link> */}
+
                   </div>
                 )}
               </div>
@@ -408,9 +409,8 @@ const Navbar = () => {
               >
                 Solutions
                 <FaAngleDown
-                  className={`transition-transform duration-300 ${
-                    isSolutionHover ? "rotate-180" : "rotate-0"
-                  }`}
+                  className={`transition-transform duration-300 ${isSolutionHover ? "rotate-180" : "rotate-0"
+                    }`}
                 />
               </button>
             </div>
@@ -429,9 +429,8 @@ const Navbar = () => {
             >
               Industries
               <FaAngleDown
-                className={`transition-transform duration-300 ${
-                  isIndustryHover ? "rotate-180" : "rotate-0"
-                }`}
+                className={`transition-transform duration-300 ${isIndustryHover ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
 
@@ -554,18 +553,27 @@ const Navbar = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-x-10 text-gray-700 text-[1rem] w-full">
-              <div className="flex flex-col">
+              <div className="flex flex-row gap-x-10">
                 <Link
                   to="/tourism"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
-                  <div className="flex items-center  gap-5">
+                  <div className="flex items-center  gap-2">
                     <MdCardTravel />
                     Tourism
                   </div>
                 </Link>
-
                 <Link
+                  to="/customlogistics"
+                  className="mb-15 text-slate-900 hover:text-primary"
+                >
+                  <div className="flex items-center  gap-2">
+                    <LuContainer />
+                    Custom Logistics
+                  </div>
+                </Link>
+
+                {/* <Link
                   to="/coming"
                   className="mb-15 text-slate-900 hover:text-primary"
                 >
@@ -596,15 +604,7 @@ const Navbar = () => {
                   </div>
                 </Link>
 
-                <Link
-                  to="/customlogistics"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <LuContainer />
-                    Custom Logistics
-                  </div>
-                </Link>
+
 
                 <Link
                   to="/coming"
@@ -646,7 +646,7 @@ const Navbar = () => {
                     <TbBuildingFactory />
                     Energy
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
