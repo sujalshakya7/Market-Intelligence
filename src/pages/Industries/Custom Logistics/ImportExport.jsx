@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../components/Navigation/Breadcrumb";
 const ImportExport = () => {
@@ -7,6 +7,7 @@ const ImportExport = () => {
     // States
     const [articles, setArticles] = useState([]);
     const [loadingStates, setLoadingStates] = useState({});
+      const cardsRef = useRef(null);
 
     // Config for all tourism cards
     const cardsConfig = [
@@ -68,24 +69,58 @@ const ImportExport = () => {
     return (
         <section className="bg-slate-100 pb-10">
             <div className="wrapper mt-10 font-general-sans overflow-hidden">
-                <Breadcrumb />
+             
 
                 {/* Tourism Industry Research section */}
-                <div className="my-9">
-                    <h1 className="xs:text-2xl md:text-4xl font-medium mb-4">
-                        Custom Logistics Intelligence
-                    </h1>
-                    <p className="max-w-4xl text-justify text-gray-700">
-                        Infography Technologies provides reliable data and research across
-                        industries, helping businesses make informed decisions. Our insights
-                        keep you ahead of market trends, identify opportunities, and
-                        anticipate challenges, ensuring you stay competitive in a rapidly
-                        changing business environment.
-                    </p>
+                <div className="my-9 relative">
+                    {/* Image container with overlay text */}
+                    <div className="relative rounded-lg overflow-hidden shadow-2xl">
+                        <img
+                            src="/customLogistics.png"
+                            alt="Logistics"
+                            className="w-full h-auto max-h-[600px] object-cover"
+                        />
+
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                        {/* Breadcrumbs at top-left */}
+                        <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
+                            <div className="text-white [&_a]:!text-white [&_span]:!text-white [&_svg]:!text-white">
+                                <Breadcrumb />
+                            </div>
+                        </div>
+
+                        {/* Overlay text - bottom left, responsive */}
+                        <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-white max-w-full md:max-w-2xl">
+                            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+                              Custom Logistics
+                            </h2>
+                            <p className="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl opacity-90">
+                                Discover insights into traveler behavior, emerging destinations, sustainability, and market trends shaping the future of tourism.
+                            </p>
+
+                            {/* Optional buttons */}
+                            <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                                <button
+
+                                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition"
+                                >
+                                    Get in Touch
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                    }}
+                                    className="px-6 sm:px-8 py-2 sm:py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-medium rounded-full border border-white/40 transition">
+                                    Explore More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Tourism Categories Section */}
-                <h1 className="xs:text-2xl md:text-4xl font-medium mb-8">
+                <h1 ref={cardsRef} className="xs:text-2xl md:text-4xl font-medium mb-8">
                     Custom Logistics Categories
                 </h1>
                 {/* Filters */}
