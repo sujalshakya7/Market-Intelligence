@@ -115,12 +115,12 @@ const Tourism = () => {
 
               {/* Optional buttons */}
               <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                <button
+                {/* <button
                  
                   className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition"
                 >
                   Get in Touch
-                </button>
+                </button> */}
                 <button 
                  onClick={() => {
                     cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -135,7 +135,7 @@ const Tourism = () => {
 
 
         {/* Tourism Categories Section */}
-        <h1 ref={cardsRef} className="xs:text-2xl md:text-4xl font-medium mb-8">
+        <h1 id="tourism-categories" ref={cardsRef} className="xs:text-2xl md:text-4xl font-medium mb-8">
           Tourism Categories
         </h1>
         {/* Filters */}
@@ -239,6 +239,7 @@ const Tourism = () => {
                     </ul>
 
                     <hr className="border-t-2 border-gray-100 mt-4" />
+                    {card.articleId === 2 && (
                     <div className="mt-6 flex justify-end">
                       <button
                         onClick={() =>
@@ -256,6 +257,7 @@ const Tourism = () => {
                         View All
                       </button>
                     </div>
+                    )}
                   </>
                 ) : (
                   <p className="text-red-500 text-sm mt-3">

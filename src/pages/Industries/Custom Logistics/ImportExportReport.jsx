@@ -17,7 +17,12 @@ const ImportExportReport = () => {
         {
             articleId: 7,
             datasetApi:
-                "https://ezexplanation.com/api/intel/article/dataset/import-and-export-news/",
+                [
+                    "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
+                    "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
+                    "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
+                ],
+
             path: "/customlogistics/import-and-export-report/news",
         },
     ];
@@ -35,8 +40,22 @@ const ImportExportReport = () => {
                         try {
                             const article = data.find((d) => d.id === card.articleId);
 
-                            const datasetRes = await fetch(card.datasetApi);
-                            let datasetData = await datasetRes.json();
+                            let datasetData = [];
+
+                            if (Array.isArray(card.datasetApi)) {
+                                const responses = await Promise.all(
+                                    card.datasetApi.map((url) =>
+                                        fetch(url).then((res) => res.json())
+                                    )
+                                );
+
+                                datasetData = responses.flat(); // ✅ IMPORTANT
+                            } else {
+                                const datasetRes = await fetch(card.datasetApi);
+                                datasetData = await datasetRes.json();
+                            }
+
+
 
                             // ⭐ Sort & keep latest three datasets
                             datasetData = datasetData
@@ -140,7 +159,8 @@ const ImportExportReport = () => {
                                                                 className="text-blue-400 underline w-[10rem] hover:text-blue-700"
                                                                 download
                                                             >
-                                                                {ds.article?.title || "Untitled Report"}
+                                                                {ds.article?.title || ds.title || "Untitled Report"}
+
                                                             </a>
 
 

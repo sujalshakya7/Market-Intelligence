@@ -67,7 +67,7 @@ const ImportExport = () => {
         fetchData();
     }, []);
     return (
-        <section className="bg-slate-100 pb-10">
+        <section className="bg-slate-100 pb-10 wrapper">
             <div className="wrapper mt-10 font-general-sans overflow-hidden">
              
 
@@ -101,12 +101,12 @@ const ImportExport = () => {
 
                             {/* Optional buttons */}
                             <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                                <button
+                                {/* <button
 
                                     className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition"
                                 >
                                     Get in Touch
-                                </button>
+                                </button> */}
                                 <button
                                     onClick={() => {
                                         cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -126,14 +126,14 @@ const ImportExport = () => {
                 {/* Filters */}
                 <div className="mb-5 flex justify-between items-center mt-3">
                     <div className="flex gap-5">
-                        <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
+                        {/* <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
                             All
-                        </button>
+                        </button> */}
                         <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
                             Recently Updated
                         </button>
                     </div>
-                    <div className="flex gap-3 items-center">
+                    {/* <div className="flex gap-3 items-center">
                         <button
                             className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
                             style={{
@@ -144,7 +144,7 @@ const ImportExport = () => {
                             <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
                             Filter By{" "}
                         </button>{" "}
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-6 w-full">
