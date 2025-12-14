@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+/**
+ * Extract first image src from HTML content
+ */
+const extractImageFromContent = (html) => {
+  if (!html) return null;
+  const match = html.match(/<img[^>]+src="([^">]+)"/);
+  return match ? match[1] : null;
+};
 
 const News = () => {
-  const [newsData, setNewsData] = useState(null);
+  const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await fetch(
-          "https://ezexplanation.com/api/intel/article/report/import-and-export-news/"
-        );
-        const data = await res.json();
+  const API_URLS = [
+    "https://ezexplanation.com/api/intel/article/report/custom-logistics-news-1/",
+    "https://ezexplanation.com/api/intel/article/report/custom-logistics-news-2/",
+    "https://ezexplanation.com/api/intel/article/report/custom-logistics-news-3/",
+  ];
 
-        setNewsData(data);
-      } catch (err) {
-        console.error("Error fetching news data:", err);
+  useEffect(() => {
+    const fetchAllNews = async () => {
+      try {
+        const responses = await Promise.all(
+          API_URLS.map((url) => fetch(url).then((res) => res.json()))
+        );
+
+        setNewsData(responses.filter(Boolean));
+      } catch (error) {
+        console.error("Error fetching news:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchNews();
+    fetchAllNews();
   }, []);
 
   if (loading) {
@@ -29,26 +44,50 @@ const News = () => {
     );
   }
 
-  if (!newsData) {
+  if (!newsData.length) {
     return (
-      <div className="text-center mt-10 text-red-500">
-        Failed to load news data.
-      </div>
+      <div className="text-center mt-10 text-red-500">No news available.</div>
     );
   }
 
   return (
     <section className="wrapper mt-10 font-general-sans">
-      <h1 className="text-3xl font-medium mb-4">{newsData.article?.title}</h1>
-      <p className="text-gray-600 mb-6">{newsData.article?.abstract}</p>
+      <h1 className="text-3xl font-medium mb-6">Custom Logistics News</h1>
 
-      {/* Display the content */}
-      <div className="w-[50%] mx-auto md-4">
-      <div
-        className="prose max-w-full font-general-sans 
-        "
-        dangerouslySetInnerHTML={{ __html: newsData.content }}
-      />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {newsData.map((item, index) => {
+          const imageUrl = extractImageFromContent(item.content);
+
+          return (
+            <Link
+              key={index}
+              to={`/news/${item.article.slug}`} // ✅ FIXED
+              className="bg-white rounded-md shadow-sm px-3 pt-3 pb-5 flex flex-col hover:shadow-2xl transition cursor-pointer"
+            >
+              {/* IMAGE */}
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt={item.article.title}
+                  className="w-full h-48 object-cover rounded-md mb-4"
+                />
+              )}
+
+              {/* TITLE */}
+              <h2 className="text-xl font-semibold">{item.article.title}</h2>
+
+              {/* DATE */}
+              <div className="pt-4 mb-2">
+                <span className="text-xs text-gray-500">
+                  {new Date(item.created_at).toLocaleDateString()}
+                </span>
+              </div>
+
+              {/* ABSTRACT */}
+              <p className="text-gray-600 text-sm">{item.article.abstract}</p>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

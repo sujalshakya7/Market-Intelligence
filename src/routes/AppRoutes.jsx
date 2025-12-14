@@ -18,7 +18,10 @@ import ImportExport from "../pages/Industries/Custom Logistics/ImportExport";
 
 import GoogleAnalytics from "../GoogleAnalytics";
 import ImportExportReport from "../pages/Industries/Custom Logistics/ImportExportReport";
+import TopItemsReport from "../pages/Industries/Custom Logistics/TopItemsReport";
 import News from "../pages/Industries/Custom Logistics/News";
+import NewsDetail from "../pages/Industries/Custom Logistics/NewsDetail";
+import Contact from "../pages/Contact/Contact";
 const AppRoutes = () => {
   return (
     <>
@@ -39,10 +42,22 @@ const AppRoutes = () => {
           />
           <Route path="/tourism/trekking-reports/data" element={<Data />} />
           <Route path="/customlogistics" element={<ImportExport />} />
-          <Route path="/customlogistics/import-and-export-report/news" element={<News />} />
-         <Route path="/customlogistics/import-and-export-report" element={<ImportExportReport />} />
+          <Route
+            path="/customlogistics/import-and-export-report/news"
+            element={<News />}
+          />
+          <Route
+            path="/customlogistics/import-and-export-report/top-items"
+            element={<TopItemsReport />}
+          />
+          <Route
+            path="/customlogistics/import-and-export-report"
+            element={<ImportExportReport />}
+          />
 
+          <Route path="/news/:newsId" element={<NewsDetail />} />
           <Route path="/coming" element={<Coming />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </BrowserRouter>
