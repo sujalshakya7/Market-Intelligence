@@ -144,7 +144,6 @@ const TrekkingReport = () => {
                               )
                             : ""}
                         </span>
-
                         <button
                           onClick={() =>
                             navigate("/tourism/trekking-reports/data", {

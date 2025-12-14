@@ -121,7 +121,6 @@ const Tourism = () => {
                 >
                   Get in Touch
                 </button>
-
                 <button 
                  onClick={() => {
                     cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });

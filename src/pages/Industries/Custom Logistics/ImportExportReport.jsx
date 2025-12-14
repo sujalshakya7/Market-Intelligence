@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ImportExportReport = () => {
@@ -6,7 +6,6 @@ const ImportExportReport = () => {
 
     const [articles, setArticles] = useState([]);
     const [loadingStates, setLoadingStates] = useState({});
-      const cardsRef = useRef(null);
 
     const cardsConfig = [
         {
