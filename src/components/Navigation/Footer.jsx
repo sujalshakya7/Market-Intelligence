@@ -51,7 +51,14 @@ function Footer() {
               >
                 infographytech9@gmail.com
               </Link>
-              <div className="flex gap-3">
+
+              <Link
+                to="https://www.linkedin.com/company/infographytechnologies/"
+                className="hover:underline"
+              >
+                Linkden
+              </Link>
+              {/* <div className="flex gap-3">
                 <Link
                   to="/linkedin"
                   className="p-2 bg-primary text-white rounded-sm hover:bg-primary/90 transition"
@@ -73,7 +80,7 @@ function Footer() {
                 >
                   <FiYoutube />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -83,7 +90,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row justify-between  sm:text-left gap-5 py-5 text-sm md:text-base text-gray-600">
-          <p>&copy; 2025 Infography Technology, All Rights Reserved</p>
+          <p>&copy; 2025 Infography Technologies, All Rights Reserved</p>
           <div className="flex justify-between gap-4">
             <Link to="/" className="hover:underline">
               Terms & Conditions

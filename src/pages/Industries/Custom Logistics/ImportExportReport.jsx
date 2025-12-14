@@ -12,11 +12,13 @@ const ImportExportReport = () => {
             articleId: 8,
             datasetApi:
                 "https://ezexplanation.com/api/intel/article/dataset/import-and-export-items/",
+            path: "/customlogistics/import-and-export-report/top-items",
         },
         {
             articleId: 7,
             datasetApi:
                 "https://ezexplanation.com/api/intel/article/dataset/import-and-export-news/",
+            path: "/customlogistics/import-and-export-report/news",
         },
     ];
 
@@ -165,7 +167,7 @@ const ImportExportReport = () => {
 
                                         <div className="mt-6 flex justify-end">
                                             <button
-                                                onClick={() => navigate("/customlogistics/import-and-export-report/news")}
+                                                onClick={() => navigate(card.path)}
                                                 className="px-6 py-2 bg-blue-400 text-white rounded-full hover:bg-blue-600 transition"
                                             >
                                                 View All
