@@ -80,16 +80,16 @@ const TrekkingReport = () => {
                 >
                   All <RxCross1 size={18} />
                 </button>
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
+                {/* <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
                   Popular
-                </button>
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
+                </button> */}
+                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
                   Recently Updated
                 </button>
               </div>
 
               {/* Right buttons */}
-              <div className="flex gap-3 items-center">
+              {/* <div className="flex gap-3 items-center">
                 <button
                   className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
                   style={{
@@ -110,7 +110,7 @@ const TrekkingReport = () => {
                 >
                   Download Report
                 </button>
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-8 mb-20">
@@ -144,7 +144,6 @@ const TrekkingReport = () => {
                               )
                             : ""}
                         </span>
-
                         <button
                           onClick={() =>
                             navigate("/tourism/trekking-reports/data", {

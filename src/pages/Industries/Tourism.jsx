@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../components/Navigation/Breadcrumb";
 import TourismChart from "./Tourism/TourismChart";
@@ -6,9 +6,12 @@ import TourismChart from "./Tourism/TourismChart";
 const Tourism = () => {
   const navigate = useNavigate();
 
+
   // States
   const [articles, setArticles] = useState([]);
   const [loadingStates, setLoadingStates] = useState({});
+  const cardsRef = useRef(null);
+
 
   // Config for all tourism cards
   const cardsConfig = [
@@ -80,37 +83,73 @@ const Tourism = () => {
   return (
     <section className="bg-slate-100 pb-10">
       <div className="wrapper mt-10 font-general-sans overflow-hidden">
-        <Breadcrumb />
+
 
         {/* Tourism Industry Research section */}
-        <div className="my-9">
-          <h1 className="xs:text-2xl md:text-4xl font-medium mb-4">
-            Tourism Industry Research
-          </h1>
-          <p className="max-w-4xl text-justify text-gray-700">
-            Infography Technologies provides reliable data and research across
-            industries, helping businesses make informed decisions. Our insights
-            keep you ahead of market trends, identify opportunities, and
-            anticipate challenges, ensuring you stay competitive in a rapidly
-            changing business environment.
-          </p>
+        <div className="my-9 relative">
+          {/* Image container with overlay text */}
+          <div className="relative rounded-lg overflow-hidden shadow-2xl">
+            <img
+  src="/Tourismimg.png"
+  alt="Tourism"
+  className="w-full h-[75vh] md:h-auto max-h-[600px] object-cover"
+/>
+
+
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            {/* Breadcrumbs at top-left */}
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
+              <div className="text-white [&_a]:!text-white [&_span]:!text-white [&_svg]:!text-white">
+                <Breadcrumb />
+              </div>
+            </div>
+
+            {/* Overlay text - bottom left, responsive */}
+            <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-white max-w-full md:max-w-2xl">
+              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+                Tourism Industry Research
+              </h2>
+              <p className="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl opacity-90">
+                Discover insights into traveler behavior, emerging destinations, sustainability, and market trends shaping the future of tourism.
+              </p>
+
+              {/* Optional buttons */}
+              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-start">
+                {/* <button
+                 
+                  className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition"
+                >
+                  Get in Touch
+                </button> */}
+                <button 
+                 onClick={() => {
+                    cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                className="px-6 sm:px-8 py-2 sm:py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-medium rounded-full border border-white/40 transition">
+                  Explore More
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
+
         {/* Tourism Categories Section */}
-        <h1 className="xs:text-2xl md:text-4xl font-medium mb-8">
+        <h1 id="tourism-categories" ref={cardsRef} className="xs:text-2xl md:text-4xl font-medium mb-8">
           Tourism Categories
         </h1>
         {/* Filters */}
         <div className="mb-5 flex justify-between items-center mt-3">
           <div className="flex gap-5">
-            <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
+            {/* <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
               All
-            </button>
+            </button> */}
             <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
               Recently Updated
             </button>
           </div>
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <button
               className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
               style={{
@@ -121,10 +160,10 @@ const Tourism = () => {
               <img src="/filter.svg" alt="Filter icon" className="w-4 h-4" />{" "}
               Filter By{" "}
             </button>{" "}
-          </div>
+          </div> */}
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 w-full">
+        <div  className="flex flex-col md:flex-row gap-6 w-full">
           {cardsConfig.map((card) => {
             const article = articles.find((a) => a.id === card.articleId);
             const isLoading = loadingStates[card.articleId];
@@ -169,8 +208,15 @@ const Tourism = () => {
 
                               <div className=" flex  justify-between">
                                 <div className="font-regular w-[10rem] text-blue-500  cursor-pointer">
-                                  {datasetItem.article?.title ||
-                                    "Untitled Report"}
+                                  <a
+                                    href={`https://ezexplanation.com${datasetItem.dataset}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-400 underline w-[10rem] hover:text-blue-700"
+                                    download
+                                  >
+                                    {datasetItem.article?.title || "Untitled Report"}
+                                  </a>
                                 </div>
 
                                 <span className="text-gray-500 text-sm">
@@ -194,6 +240,7 @@ const Tourism = () => {
                     </ul>
 
                     <hr className="border-t-2 border-gray-100 mt-4" />
+                    {card.articleId === 2 && (
                     <div className="mt-6 flex justify-end">
                       <button
                         onClick={() =>
@@ -211,6 +258,7 @@ const Tourism = () => {
                         View All
                       </button>
                     </div>
+                    )}
                   </>
                 ) : (
                   <p className="text-red-500 text-sm mt-3">

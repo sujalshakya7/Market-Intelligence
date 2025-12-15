@@ -51,7 +51,14 @@ function Footer() {
               >
                 infographytech9@gmail.com
               </Link>
-              <div className="flex gap-3">
+
+              <Link
+                to="https://www.linkedin.com/company/infographytechnologies/"
+                className="hover:underline"
+              >
+                Linkden
+              </Link>
+              {/* <div className="flex gap-3">
                 <Link
                   to="/linkedin"
                   className="p-2 bg-primary text-white rounded-sm hover:bg-primary/90 transition"
@@ -73,7 +80,7 @@ function Footer() {
                 >
                   <FiYoutube />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
