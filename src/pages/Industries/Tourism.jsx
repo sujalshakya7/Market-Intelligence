@@ -90,10 +90,11 @@ const Tourism = () => {
           {/* Image container with overlay text */}
           <div className="relative rounded-lg overflow-hidden shadow-2xl">
             <img
-              src="/Tourismimg.png"
-              alt="Tourism"
-              className="w-full h-auto max-h-[600px] object-cover"
-            />
+  src="/Tourismimg.png"
+  alt="Tourism"
+  className="w-full h-[75vh] md:h-auto max-h-[600px] object-cover"
+/>
+
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
@@ -114,7 +115,7 @@ const Tourism = () => {
               </p>
 
               {/* Optional buttons */}
-              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 items-start">
                 {/* <button
                  
                   className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition"

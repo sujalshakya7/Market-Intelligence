@@ -53,7 +53,7 @@ const News = () => {
   }
 
   return (
-    <section className="wrapper mt-10 font-general-sans">
+    <section className="wrapper mt-20 font-general-sans">
       <h1 className="text-3xl font-medium mb-6">Custom Logistics News</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
