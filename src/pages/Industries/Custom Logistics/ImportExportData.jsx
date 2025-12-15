@@ -14,12 +14,12 @@ const ImportExportData = () => {
             datasetApi:
                 "https://ezexplanation.com/api/intel/article/import-and-export-items/",
         },
-          {
+            {
             articleId: 7,
             datasetApi:
                 "https://ezexplanation.com/api/intel/article/import-and-export-news/",
         },
-     
+        
 
     ];
 
@@ -77,10 +77,10 @@ const ImportExportData = () => {
 
                 {/* Tourism Industry Research section */}
                 <div className="my-9">
+                    <h1 className="xs:text-2xl text-4xl font-medium mb-4"> Still Editing </h1>
                     <h1 className="xs:text-2xl md:text-4xl font-medium mb-4">
                         Import And Export
                     </h1>
-                   
                 </div>
                 {/* Filters */}
                 <div className="mb-5 flex justify-between items-center mt-3">

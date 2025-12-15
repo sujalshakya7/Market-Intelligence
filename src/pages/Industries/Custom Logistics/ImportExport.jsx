@@ -72,6 +72,7 @@ const ImportExport = () => {
 
                 {/* Tourism Industry Research section */}
                 <div className="my-9">
+                    <h1 className="xs:text-2xl text-4xl font-medium mb-4"> Still Editing </h1>
                     <h1 className="xs:text-2xl md:text-4xl font-medium mb-4">
                         Custom Logistics Intelligence
                     </h1>
