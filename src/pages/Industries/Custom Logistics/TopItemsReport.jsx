@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+
 import TradeChart from "./TradeChart";
 
 const TopItemsReport = () => {
