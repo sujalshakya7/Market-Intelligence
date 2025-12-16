@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BsStars } from "react-icons/bs";
 import { GoArrowUpRight } from "react-icons/go";
 import { MdOutlineCalendarMonth } from "react-icons/md";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { PiChartBarHorizontal } from "react-icons/pi";
 import { BiTachometer } from "react-icons/bi";
 import { HiOutlineUserGroup } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const cards = [
   {
@@ -59,6 +60,8 @@ const blog = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+  const industriesRef = useRef(null);
   return (
     <>
       {/* Hero section */}
@@ -105,9 +108,18 @@ const Home = () => {
               >
                 Get Started
               </Link>
-              <button className="xs:px-22 sm:px-8 md:px-10 py-4 md:py-5 rounded-full border-2 border-slate-400 text-slate-500 hover:bg-slate-100 transition">
+              <button
+                onClick={() =>
+                  industriesRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
+                className="xs:px-22 sm:px-8 md:px-10 py-4 md:py-5 rounded-full border-2 border-slate-400 text-slate-500 hover:bg-slate-100 transition"
+              >
                 Explore Industries
               </button>
+
             </div>
           </section>
         </div>
@@ -192,25 +204,33 @@ const Home = () => {
           </section>
 
           {/* ================  Industries we serve section ========== */}
-          <section className="w-auto lg:flex justify-between my-32">
+          <section ref={industriesRef} className="w-auto lg:flex justify-between my-32 scroll-mt-28">
             <div className="w-[40rem] pr-10 ">
               <h1 className="h1 lg:w-120">Industries We Serve</h1>
               <div className="lg:flex flex-wrap gap-3 xs:hidden ">
-                <button className="lg:py-3 lg:px-6  xs:p-2 rounded-full border bg-primary/80 text-white ">
+                <button
+                  onClick={() => navigate("/tourism")}
+                  className="lg:py-3 lg:px-6 xs:p-2 rounded-full border
+                  transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-400
+                  hover:shadow-md ">
                   {" "}
-                  Technology{" "}
+                  Tourism{" "}
                 </button>
-                <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
+                <button
+                  onClick={() => navigate("/customlogistics")}
+                  className="lg:py-3 lg:px-6 xs:p-2 rounded-full border
+                  transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-400
+                  hover:shadow-md ">
                   {" "}
-                  Finance{" "}
+                  Custom Logistics{" "}
                 </button>
-                <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
+                {/* <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
                   {" "}
                   Healthcare{" "}
                 </button>
                 <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
                   {" "}
-                  Tourism{" "}
+                  Technology{" "}
                 </button>
                 <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
                   {" "}
@@ -239,7 +259,7 @@ const Home = () => {
                 <button className="lg:py-3 lg:px-6 xs:p-2 rounded-full border ">
                   {" "}
                   Automobile{" "}
-                </button>
+                </button> */}
               </div>
             </div>
             <div className=" h-[28rem] w-full xs:h-[20rem] lg:h-full flex relative rounded-md overflow-hidden ">
@@ -277,9 +297,8 @@ const Home = () => {
                 ].map((item, index) => (
                   <button
                     key={index}
-                    className={`min-w-[7rem] px-4 py-2 text-sm rounded-full border whitespace-nowrap ${
-                      index === 0 ? "bg-primary/80 text-white" : "text-gray-800"
-                    }`}
+                    className={`min-w-[7rem] px-4 py-2 text-sm rounded-full border whitespace-nowrap ${index === 0 ? "bg-primary/80 text-white" : "text-gray-800"
+                      }`}
                   >
                     {item}
                   </button>
@@ -292,9 +311,9 @@ const Home = () => {
               </div>
             </div>
           </section>
-          <button className="md:flex xs:hidden items-center mt-4 bg-primary px-10 py-5 gap-3  rounded-fullpx-10  rounded-full  text-white  hover:bg-blue-700 transition">
+          {/* <button className="md:flex xs:hidden items-center mt-4 bg-primary px-10 py-5 gap-3  rounded-fullpx-10  rounded-full  text-white  hover:bg-blue-700 transition">
             Learn More <GoArrowUpRight className="w-5 h-5" />
-          </button>
+          </button> */}
           {/* ================  Industries we serve section ends here ========== */}
 
           {/* ======== Market Intelligence Blogs section starts ======== */}

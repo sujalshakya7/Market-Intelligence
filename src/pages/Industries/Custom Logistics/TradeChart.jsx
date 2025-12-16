@@ -156,7 +156,7 @@ const TradeChart = () => {
 
                     {/* Export Chart */}
                     <section className="border border-gray-300 rounded-lg p-4 bg-white relative xs:h-[250px] md:h-[480px] mb-8">
-                        <p>{exportAnalysis.abstract}</p>
+                        <p className="text-center">{exportAnalysis.abstract}</p>
                         <Bar
                             data={exportData}
                             options={{ ...options, plugins: { ...options.plugins, title: { display: true, text: "Exports" } } }}
