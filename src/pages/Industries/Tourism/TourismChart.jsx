@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa6";
 import { GrDownload } from "react-icons/gr";
 import {
@@ -29,6 +30,25 @@ const TourismChart = () => {
   const chartRef = useRef(null);
   const [data, setData] = useState(null);
   const [pdfUrl, setPdfUrl] = useState("");
+  const navigate = useNavigate();
+
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    if (value === "custom-logistics") navigate("/customlogistics");
+    else if (value === "tourism") navigate("/tourism");
+  };
+
+    const handleTourismClick = (e) => {
+        e.preventDefault();
+        // Navigate to /tourism first
+        navigate("/tourism");
+        // Wait a short time for the page to render, then scroll
+        setTimeout(() => {
+            const el = document.getElementById("tourism-categories");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+    };
 
   // Download chart as PNG
   const downloadChart = () => {
@@ -125,7 +145,7 @@ const TourismChart = () => {
   return (
     <>
       <section className="wrapper my-20">
-        <Breadcrumb/>
+        <Breadcrumb />
 
         <h1 className="font-general-sans font-semibold xs:text-xl md:text-3xl my-6">
           Trekking Arrival VS Tourist Arrival
@@ -220,14 +240,14 @@ const TourismChart = () => {
                 <div className="relative">
                   <select
                     defaultValue=""
+                    onChange={handleChange}
                     className="w-full appearance-none bg-gray-50 border border-gray-300 text-gray-400 py-3 px-4 pr-10 rounded-lg focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer text-base font-medium"
                   >
                     <option value="" disabled>
                       More Industries
                     </option>
-                    <option>Technology</option>
-                    <option>Healthcare</option>
-                    <option>Finance</option>
+                    <option value="custom-logistics">Custom Logistics</option>
+                    <option value="tourism">Tourism</option>
                   </select>
                   <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
                 </div>
@@ -251,24 +271,21 @@ const TourismChart = () => {
                 </h2>
                 <ul className="space-y-3">
                   <li>
-                    <a href="">Trekking Stays</a>
+                    <Link
+                      to="/tourism"
+                      onClick={handleTourismClick}
+                      className="text-blue-600 hover:underline"
+                    >
+                      Tourism Reports
+                    </Link>
                   </li>
                   <li>
-                    <a href="">Trekking gears</a>
-                  </li>
-                  <li>
-                    <a href="">Trekking paths</a>
-                  </li>
-                  <li>
-                    <a href="">Trekking funds</a>
-                  </li>
-                  <li>
-                    <a href="">Government in Trekking</a>
-                  </li>
-                  <li>
-                    <a href="" className="flex items-center">
-                      More…
-                    </a>
+                    <Link
+                      to="/customlogistics/import-and-export-report/news"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Import and Export News
+                    </Link>
                   </li>
                 </ul>
               </div>

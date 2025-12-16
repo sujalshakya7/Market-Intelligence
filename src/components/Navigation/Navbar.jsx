@@ -51,7 +51,6 @@ const Navbar = () => {
         fixed top-0 left-0 w-full backdrop-blur-2xl bg-white shadow-sm z-50
         transition-all duration-500
         ${show ? "translate-y-0" : "-translate-y-full"}
-        ${isIndustryHover || isSolutionHover ? "h-auto" : "h-fit"}
       `}
       onMouseLeave={() => {
         setIsIndustryHover(false);
@@ -215,15 +214,27 @@ const Navbar = () => {
                   <div className="ml-4 mt-2 space-y-2 py-2">
                     <Link
                       to="/tourism"
-                      className="block py-2 px-4  rounded-lg"
+                      className="flex items-center gap-2 block py-2 px-4  rounded-lg"
                       onClick={() => {
                         setIsSideMenuOpen(false);
                         document.body.style.overflow = "auto";
                       }}
                     >
-                      Tourism
+                      <MdCardTravel />
+                      <span>Tourism</span>
                     </Link>
                     <Link
+                      to="/customlogistics"
+                      className=" flex items-center gap-2 block py-2 px-4  rounded-lg"
+                      onClick={() => {
+                        setIsSideMenuOpen(false);
+                        document.body.style.overflow = "auto";
+                      }}
+                    >
+                      <LuContainer />
+                      Custom Logistics
+                    </Link>
+                    {/* <Link
                       to="/coming"
                       className="block py-2 px-4  rounded-lg"
                       onClick={() => {
@@ -322,22 +333,12 @@ const Navbar = () => {
                       }}
                     >
                       Insurance
-                    </Link>
-                    <Link
-                      to="/customlogistics"
-                      className="block py-2 px-4  rounded-lg"
-                      onClick={() => {
-                        setIsSideMenuOpen(false);
-                        document.body.style.overflow = "auto";
-                      }}
-                    >
-                      Logistics
-                    </Link>
+                    </Link> */}
                   </div>
                 )}
               </div>
-
-              {/* NORMAL LINKS */}
+              {/*}
+              NORMAL LINKS
               <Link
                 to="/coming"
                 className="py-3 border-b border-gray-100"
@@ -362,7 +363,7 @@ const Navbar = () => {
 
               {/* AUTH BUTTONS */}
               <div className="flex flex-col gap-3 pt-4">
-                <Link
+                {/* <Link
                   to="/coming"
                   className="py-3 px-4 text-center border border-slate-300 bg-white rounded-sm hover:border-primary transition-all"
                   onClick={() => {
@@ -371,10 +372,10 @@ const Navbar = () => {
                   }}
                 >
                   Sign In
-                </Link>
-
+                </Link>{" "} */}
+                
                 <Link
-                  to="/coming"
+                  to="/contact"
                   className="py-3 px-4 text-center bg-primary text-white rounded-sm hover:bg-blue-800"
                   onClick={() => {
                     setIsSideMenuOpen(false);
@@ -415,52 +416,82 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* Industries Button */}
-            <button
-              className="hover:text-gray-900 flex items-center gap-2"
-              onClick={() => {
-                setIsIndustryHover((prev) => !prev);
-                setIsSolutionHover(false);
-              }}
-              onMouseEnter={() => {
-                setIsIndustryHover(true);
-                setIsSolutionHover(false);
-              }}
+            <div
+              className="relative"
+              onMouseLeave={() => setIsIndustryHover(false)}
             >
-              Industries
-              <FaAngleDown
-                className={`transition-transform duration-300 ${
-                  isIndustryHover ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
+              <button
+                className="hover:text-gray-900 flex items-center gap-2"
+                onClick={() => {
+                  setIsIndustryHover((prev) => !prev);
+                  setIsSolutionHover(false);
+                }}
+                onMouseEnter={() => {
+                  setIsIndustryHover(true);
+                  setIsSolutionHover(false);
+                }}
+              >
+                Industries
+                <FaAngleDown
+                  className={`transition-transform duration-300 ${
+                    isIndustryHover ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+              {isIndustryHover && (
+                <div className="absolute top-full left-0 w-max bg-white shadow-lg rounded-md p-5">
+                  <div className="flex flex-col gap-4 text-gray-700 text-[1rem]">
+                    <Link
+                      to="/tourism"
+                      className="text-slate-900 hover:text-primary"
+                    >
+                      <div className="flex items-center gap-2">
+                        <MdCardTravel />
+                        Tourism
+                      </div>
+                    </Link>
+                    <Link
+                      to="/customlogistics"
+                      className="text-slate-900 hover:text-primary"
+                    >
+                      <div className="flex items-center gap-2">
+                        <LuContainer />
+                        Custom Logistics
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
 
+{/* 
             <Link to="/coming" className="hover:text-gray-900">
               Blog
             </Link>
             <Link to="/coming" className="hover:text-gray-900">
               Pricing
             </Link>
-
+*/}
             <div className="flex h-10 items-center gap-4">
-              <Link
+              {/* <Link
                 to="/coming"
                 className="py-3 px-4 h-full flex items-center text-black border border-slate-300 bg-white/60 rounded-sm hover:border-primary hover:bg-slate-100 transition-all duration-300"
               >
                 Sign In
-              </Link>
+              </Link> */}
 
               <Link
-                to="/coming"
+                to="/contact"
                 className="py-3 px-3 flex items-center h-full bg-primary text-white rounded-sm hover:bg-blue-800"
               >
                 Get Started
               </Link>
-            </div>
+             
+            </div> 
           </div>
         </div>
       </section>
-
+ 
       {/* EXPANDED AREA WHEN SOLUTIONS HOVER/CHECKED */}
       {isSolutionHover && (
         <div
@@ -522,130 +553,6 @@ const Navbar = () => {
                     We collect and analyze the exact data you need — tailored to
                     your goals and verified for accuracy
                   </p>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* EXPANDED AREA WHEN HOVERING FOR INDUSTRIES*/}
-      {isIndustryHover && (
-        <div
-          className="bg-white shadow-inner px-10 py-10"
-          onMouseLeave={() => setIsIndustryHover(false)}
-        >
-          <div className="flex justify-between">
-            <div className="flex gap-5">
-              <div className="w-[15rem]">
-                <img
-                  src="/industries.png"
-                  alt="industries"
-                  className="w-full h-[10rem] object-cover object-right-top rounded-sm "
-                />
-                <p className="mt-5 text-slate-600 text-sm">
-                  Our industries are built on early intelligence, expanding
-                  datasets, and continuous refinement. As the platform develops,
-                  these insights will grow into powerful tools for future
-                  decisions.
-                </p>
-              </div>
-              <hr className="mx-25 w-[0.1rem] h-auto bg-slate-300 rounded-full"></hr>
-            </div>
-
-            <div className="grid grid-cols-3 gap-x-10 text-gray-700 text-[1rem] w-full">
-              <div className="flex flex-col">
-                <Link
-                  to="/tourism"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <MdCardTravel />
-                    Tourism
-                  </div>
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <GrTechnology />
-                    Technology
-                  </div>
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <LuHandCoins />
-                    Finance
-                  </div>
-                </Link>
-              </div>
-              <div className="flex flex-col w-full">
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <MdOutlineHealthAndSafety />
-                    Health Care
-                  </div>
-                </Link>
-
-                <Link
-                  to="/customlogistics"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <LuContainer />
-                    Custom Logistics
-                  </div>
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <RiShakeHandsLine />
-                    Insurance
-                  </div>
-                </Link>
-              </div>
-
-              <div className="flex flex-col w-full">
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <IoFastFoodOutline />
-                    Food & Beverage
-                  </div>
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <TbPlant />
-                    Agriculture
-                  </div>
-                </Link>
-
-                <Link
-                  to="/coming"
-                  className="mb-15 text-slate-900 hover:text-primary"
-                >
-                  <div className="flex items-center  gap-5">
-                    <TbBuildingFactory />
-                    Energy
-                  </div>
                 </Link>
               </div>
             </div>

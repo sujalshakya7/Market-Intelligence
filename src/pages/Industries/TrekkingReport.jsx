@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
-import { IoIosArrowForward } from "react-icons/io";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Breadcrumb from "../../components/Navigation/Breadcrumb";
 
 const TrekkingReport = () => {
@@ -12,6 +11,7 @@ const TrekkingReport = () => {
 
   const [dataset, setDataset] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Map API keys to URLs
   const datasetAPIs = {
@@ -21,25 +21,31 @@ const TrekkingReport = () => {
   };
 
   useEffect(() => {
+    // If page is refreshed or reportData is missing
     if (!reportData?.apiKey) {
-      setLoading(false);
+      setLoading(true);
+      setError(null);
       return;
     }
 
     const apiUrl = datasetAPIs[reportData.apiKey];
-
     if (!apiUrl) {
+      setError("Invalid dataset.");
       setLoading(false);
       return;
     }
 
     const fetchData = async () => {
       try {
+        setLoading(true);
+        setError(null);
+
         const res = await fetch(apiUrl);
+        if (!res.ok) throw new Error("Fetch failed");
+
         const data = await res.json();
 
         if (Array.isArray(data)) {
-          // Sort by created_at descending and latest 3 data pick garxa
           const latestThree = data
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
             .slice(0, 3);
@@ -49,7 +55,8 @@ const TrekkingReport = () => {
           setDataset([]);
         }
       } catch (err) {
-        console.error("Error fetching dataset:", err);
+        console.error(err);
+        setError("Failed to load dataset.");
         setDataset([]);
       } finally {
         setLoading(false);
@@ -62,7 +69,6 @@ const TrekkingReport = () => {
   return (
     <section className="bg-slate-100 pb-10">
       <div className="wrapper font-general-sans mt-10">
-        {/* Breadcrumb */}
         <Breadcrumb />
 
         <div className="flex gap-6 flex-col mt-4">
@@ -72,53 +78,35 @@ const TrekkingReport = () => {
             </h3>
 
             <div className="flex xs:flex-col md:flex-row gap-5 justify-between items-center mt-8">
-              {/* Left buttons */}
               <div className="flex gap-5">
                 <button
-                  className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition"
+                  className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition"
                   onClick={() => navigate("/tourism")}
                 >
                   All <RxCross1 size={18} />
                 </button>
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
-                  Popular
-                </button>
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition">
-                  Recently Updated
-                </button>
-              </div>
 
-              {/* Right buttons */}
-              <div className="flex gap-3 items-center">
-                <button
-                  className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-md border hover:bg-blue-200 transition"
-                  style={{
-                    borderColor: "oklch(0.6209 0.1802 257.04)",
-                    color: "oklch(0.6209 0.1802 257.04)",
-                  }}
-                >
-                  <img
-                    src="/filter.svg"
-                    alt="Filter icon"
-                    className="w-4 h-4"
-                  />{" "}
-                  Filter By
-                </button>
-                <button
-                  onClick={() => navigate("/tourism/trekking-reports/data", { state: { apiKey: 2 } })}
-                  className="inline-flex items-center gap-2 px-4 py-1 bg-blue-500 text-white rounded-md border hover:bg-blue-600 transition"
-                >
-                  Download Report
+                <button className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black">
+                  Recently Updated
                 </button>
               </div>
             </div>
 
+            {/* DATA STATE HANDLING */}
             <div className="mt-8 mb-20">
-              {loading ? (
+              {loading && (
                 <p className="text-gray-500 text-center mt-10 text-lg">
                   Loading dataset...
                 </p>
-              ) : dataset.length > 0 ? (
+              )}
+
+              {!loading && error && (
+                <p className="text-red-500 text-center mt-10 text-lg">
+                  {error}
+                </p>
+              )}
+
+              {!loading && !error && dataset.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {dataset.map((item) => (
                     <div
@@ -128,11 +116,13 @@ const TrekkingReport = () => {
                       <h2 className="text-[1.6rem] font-medium mb-4">
                         {item.article?.title || "Untitled Report"}
                       </h2>
+
                       <p className="text-gray-600 mb-4 text-sm line-clamp-3">
                         {item.article?.abstract || "No description available."}
                       </p>
+
                       <div className="flex justify-between items-end border-t border-gray-300 pt-3 mt-10">
-                        <span className="text-gray-500 text-xs  ">
+                        <span className="text-gray-500 text-xs">
                           {item.created_at
                             ? new Date(item.created_at).toLocaleDateString(
                                 "en-US",
@@ -159,7 +149,9 @@ const TrekkingReport = () => {
                     </div>
                   ))}
                 </div>
-              ) : (
+              )}
+
+              {!loading && !error && dataset.length === 0 && (
                 <p className="text-gray-500 text-center mt-10 text-lg">
                   No dataset available for this report.
                 </p>
