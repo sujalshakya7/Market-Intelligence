@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { GoArrowUpRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
 
-function Footer() {
+
+function Footer({ onExploreIndustries }) {
+    const navigate = useNavigate();
+
+    const handleExploreIndustries = () => {
+    // Navigate to home and pass state
+    navigate("/", { state: { scrollToIndustries: true } });
+  };
   return (
     <section className="wrapper">
       <footer className="font-general-sans flex flex-col gap-10 bg-white mt-4">
@@ -18,7 +26,9 @@ function Footer() {
               We provide market data and insights to help you make better
               business decisions.
             </p>
-            <button className="bg-primary rounded-md px-8 py-5 mt-3 flex items-center gap-3 text-md text-white hover:bg-primary/90 transition  md:text-base">
+            <button
+              onClick={handleExploreIndustries}
+              className="bg-primary rounded-md px-8 py-5 mt-3 flex items-center gap-3 text-md text-white hover:bg-primary/90 transition  md:text-base">
               Explore Industries
             </button>
           </div>
@@ -26,13 +36,13 @@ function Footer() {
           {/* Right Section (Links) */}
           <div className="flex  sm:flex lg:justify-end  xs:flex-wrap xs:gap-10 sm:justify-between   sm:gap-5 text-sm md:text-base w-full ">
             {/* Quick Links */}
-            <div className="flex flex-col gap-3 min-w-[150px] mr-10">
+            {/* <div className="flex flex-col gap-3 min-w-[150px] mr-10">
               <h2 className="h2 text-lg font-semibold mb-2">Quick Links</h2>
               <Link to="/">Helping You Decide</Link>
               <Link to="/coming">Blog</Link>
               <Link to="/coming">Pricing</Link>
               <Link to="/coming">FAQ & Support</Link>
-            </div>
+            </div> */}
 
             {/* Solutions */}
             <div className="flex flex-col gap-3 min-w-[150px] mr-10 ">
