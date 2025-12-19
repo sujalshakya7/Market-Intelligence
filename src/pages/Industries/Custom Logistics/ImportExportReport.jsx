@@ -7,24 +7,27 @@
     const [articles, setArticles] = useState([]);
     const [loadingStates, setLoadingStates] = useState({});
 
-    const cardsConfig = [
+    const cardsConfig = React.useMemo(
+        () => [
         {
-        articleId: 8,
-        datasetApi:
+            articleId: 8,
+            datasetApi:
             "https://ezexplanation.com/api/intel/article/dataset/import-and-export-items/",
-        path: "/customlogistics/import-and-export-report/top-items",
+            path: "/customlogistics/import-and-export-report/top-items",
         },
         {
-        articleId: 7,
-        datasetApi: [
+            articleId: 7,
+            datasetApi: [
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
-        ],
+            ],
 
-        path: "/customlogistics/import-and-export-report/news",
+            path: "/customlogistics/import-and-export-report/news",
         },
-    ];
+        ],
+        []
+    );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,7 +94,7 @@
         };
 
         fetchData();
-    }, []);
+    }, [cardsConfig]);
 
     return (
         <section className="bg-slate-100 pb-10">
