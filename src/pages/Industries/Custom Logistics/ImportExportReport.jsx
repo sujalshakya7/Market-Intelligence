@@ -153,7 +153,7 @@
                     {/* LOADING */}
                     {isLoading ? (
                     <p className="text-gray-500 text-xl mt-3 animate-pulse">
-                        Loading report data...
+                        Loading Report Data.
                     </p>
                     ) : article ? (
                     <>
@@ -222,8 +222,9 @@
                         </div>
                     </>
                     ) : (
-                    <p className="text-red-500 text-sm mt-3">
-                        Failed to load report data.
+                    <p className="text-gray-500 text-xl mt-3 animate-pulse">
+                        Loading Report Data.
+                        {/* Failed to load report data. */}
                     </p>
                     )}
                 </div>
