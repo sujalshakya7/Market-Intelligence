@@ -1,5 +1,6 @@
     import React, { useEffect, useState } from "react";
     import { Link, useNavigate } from "react-router-dom";
+    import { RxCross1 } from "react-icons/rx";
 
     const ImportExportReport = () => {
     const navigate = useNavigate();
@@ -7,24 +8,30 @@
     const [articles, setArticles] = useState([]);
     const [loadingStates, setLoadingStates] = useState({});
 
-    const cardsConfig = [
+    const cardsConfig = React.useMemo(
+        () => [
         {
-        articleId: 8,
-        datasetApi:
+            articleId: 8,
+            datasetApi:
             "https://ezexplanation.com/api/intel/article/dataset/import-and-export-items/",
-        path: "/customlogistics/import-and-export-report/top-items",
+            path: "/customlogistics/import-and-export-report/top-items",
         },
         {
-        articleId: 7,
-        datasetApi: [
+            articleId: 7,
+            datasetApi: [
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
-        ],
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
+            ],
 
-        path: "/customlogistics/import-and-export-report/news",
+            path: "/customlogistics/import-and-export-report/news",
         },
-    ];
+        ],
+        []
+    );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,7 +98,7 @@
         };
 
         fetchData();
-    }, []);
+    }, [cardsConfig]);
 
     return (
         <section className="bg-slate-100 pb-10">
@@ -108,8 +115,11 @@
             {/* Filters */}
             <div className="mb-5 flex justify-between items-center mt-3">
             <div className="flex gap-5">
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
-                All
+                <button
+                className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition"
+                onClick={() => navigate("/customlogistics")}
+                >
+                All <RxCross1 size={18} />
                 </button>
                 <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
                 Recently Updated

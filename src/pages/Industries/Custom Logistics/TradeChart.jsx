@@ -20,6 +20,7 @@ const TradeChart = () => {
     const navigate = useNavigate();
     const exportChartRef = useRef(null);
     const importChartRef = useRef(null);
+    const [pdfUrl, setPdfUrl] = useState("");
 
     const handleTourismClick = (e) => {
         e.preventDefault();
@@ -49,6 +50,22 @@ const TradeChart = () => {
         abstract: "",
         content: ""
     });
+
+   
+
+    useEffect(() => {
+        fetch(
+            "https://ezexplanation.com/api/intel/article/dataset/import-and-export-report/"
+        )
+            .then((res) => res.json())
+            .then((json) => {
+                const pdfData = json.find((item) => item.id === 31);
+                if (pdfData) {
+                    setPdfUrl("https://ezexplanation.com" + pdfData.dataset);
+                }
+            })
+            .catch((err) => console.error("Error fetching PDF dataset:", err));
+    }, []);
 
     useEffect(() => {
         // Fetch Import Analysis
@@ -148,7 +165,7 @@ const TradeChart = () => {
             <h1 className=" h1 font-general-sans font-semibold xs:text-xl md:text-3xl my-6">
                 Top 10 Export & Import Commodities (2079/80)
             </h1>
-            
+
 
             <section className="flex xs:flex-col lg:flex-row gap-6 pt-4">
                 {/* Left Content: Charts + Analyst Opinion */}
@@ -156,7 +173,7 @@ const TradeChart = () => {
 
                     {/* Export Chart */}
                     <section className="border border-gray-300 rounded-lg p-4 bg-white relative xs:h-[250px] md:h-[480px] mb-8">
-                        <p>{exportAnalysis.abstract}</p>
+                        <p className="text-center">{exportAnalysis.abstract}</p>
                         <Bar
                             data={exportData}
                             options={{ ...options, plugins: { ...options.plugins, title: { display: true, text: "Exports" } } }}
@@ -173,7 +190,7 @@ const TradeChart = () => {
                     {(exportAnalysis.title || exportAnalysis.abstract || exportAnalysis.content) && (
                         <section className="bg-white rounded-lg mt-3 mb-8 font-general-sans p-4">
                             <h3 className="xs:text-lg lg:text-2xl font-semibold mb-2">{exportAnalysis.title}</h3>
-                        
+
                             <div
                                 className="chart-analysis-paragraph space-y-3"
                                 dangerouslySetInnerHTML={{ __html: exportAnalysis.content }}
@@ -201,12 +218,24 @@ const TradeChart = () => {
                     {(importAnalysis.title || importAnalysis.abstract || importAnalysis.content) && (
                         <section className="bg-white rounded-lg mt-3 mb-8 font-general-sans p-4">
                             <h3 className="xs:text-lg lg:text-2xl font-semibold mb-2">{importAnalysis.title}</h3>
-                         
+
                             <div
                                 className="chart-analysis-paragraph space-y-3"
                                 dangerouslySetInnerHTML={{ __html: importAnalysis.content }}
                             />
                         </section>
+                    )}
+                    {/* Embedded PDF viewer */}
+                    {pdfUrl && (
+                        <div className="border border-gray-300 rounded-lg mt-4 mb-8 h-[800px]">
+                            <iframe
+                                src={pdfUrl}
+                                width="100%"
+                                height="100%"
+                                title="Trekking PDF Report"
+                                style={{ border: "none" }}
+                            />
+                        </div>
                     )}
                 </section>
 
