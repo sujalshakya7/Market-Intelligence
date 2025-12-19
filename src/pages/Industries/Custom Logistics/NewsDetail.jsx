@@ -40,6 +40,10 @@ const NewsDetail = () => {
   const [otherNews, setOtherNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sortOrder, setSortOrder] = useState("latest");
+  const [selectedMonth, setSelectedMonth] = useState("all");
+  const [selectedYear, setSelectedYear] = useState("all");
+
 
   // All news URLs
   const API_URLS = [
@@ -101,6 +105,30 @@ const NewsDetail = () => {
   const imageFromContent = extractFirstImage(content);
   const cleanContent = removeFirstImageAndTitle(content);
 
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const years = Array.from(
+    new Set(otherNews.map(item => new Date(item.created_at).getFullYear()))
+  );
+
+  const filteredAndSortedOtherNews = [...otherNews]
+    .filter(item => {
+      const date = new Date(item.created_at);
+      const matchMonth = selectedMonth === "all" || date.getMonth() === Number(selectedMonth);
+      const matchYear = selectedYear === "all" || date.getFullYear() === Number(selectedYear);
+      return matchMonth && matchYear;
+    })
+    .sort((a, b) => {
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return sortOrder === "latest" ? dateB - dateA : dateA - dateB;
+    });
+
+
+
   return (
     <section className="wrapper2 py-20 font-general-sans">
       <div className="flex flex-col lg:flex-row gap-12">
@@ -138,31 +166,75 @@ const NewsDetail = () => {
         {/* Right Column: More News */}
         <aside className="lg:w-1/3">
           <div className="sticky top-24 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">More News</h2>
-            <ul>
-              {otherNews.map((newsItem) => {
-                const imageUrl = extractFirstImage(newsItem.content);
-                return (
-                  <li key={newsItem.id} className="mb-6">
-                    {/* IMAGE */}
-                    {imageUrl && (
-                      <img
-                        src={imageUrl}
-                        alt={newsItem.article.title}
-                        className="w-full h-48 object-cover rounded-md mb-2"
-                      />
-                    )}
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <h2 className="text-2xl font-bold text-gray-800">More News</h2>
 
-                    {/* TITLE LINK */}
-                    <Link
-                      to={`/news/${newsItem.article.slug}`}
-                      className="text-gray-700 font-semibold hover:text-primary transition-colors duration-200"
-                    >
-                      {newsItem.article.title}
-                    </Link>
-                  </li>
-                );
-              })}
+              <div className="flex flex-wrap gap-2">
+                {/* Sort */}
+                <select
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value)}
+                  className="border px-2 py-1 rounded-md text-sm"
+                >
+                  <option value="latest">Latest First</option>
+                  <option value="oldest">Oldest First</option>
+                </select>
+
+                {/* Month */}
+                <select
+                  value={selectedMonth}
+                  onChange={(e) => setSelectedMonth(e.target.value)}
+                  className="border px-2 py-1 rounded-md text-sm"
+                >
+                  <option value="all">All Months</option>
+                  {months.map((month, index) => (
+                    <option key={index} value={index}>{month}</option>
+                  ))}
+                </select>
+
+                {/* Year */}
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className="border px-2 py-1 rounded-md text-sm"
+                >
+                  <option value="all">All Years</option>
+                  {years.map(year => (
+                    <option key={year} value={year}>{year}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+
+            <ul>
+              {filteredAndSortedOtherNews.length > 0 ? (
+                filteredAndSortedOtherNews.map((newsItem) => {
+                  const imageUrl = extractFirstImage(newsItem.content);
+                  return (
+                    <li key={newsItem.id} className="mb-6">
+                      {/* IMAGE */}
+                      {imageUrl && (
+                        <img
+                          src={imageUrl}
+                          alt={newsItem.article.title}
+                          className="w-full h-48 object-cover rounded-md mb-2"
+                        />
+                      )}
+
+                      {/* TITLE LINK */}
+                      <Link
+                        to={`/news/${newsItem.article.slug}`}
+                        className="text-gray-700 font-semibold hover:text-primary transition-colors duration-200"
+                      >
+                        {newsItem.article.title}
+                      </Link>
+                    </li>
+                  );
+                })
+              ) : (
+                <li className="text-gray-500">No news available for the selected date.</li>
+              )}
             </ul>
           </div>
         </aside>

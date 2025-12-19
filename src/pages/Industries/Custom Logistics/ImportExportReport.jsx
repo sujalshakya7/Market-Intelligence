@@ -1,5 +1,6 @@
     import React, { useEffect, useState } from "react";
     import { Link, useNavigate } from "react-router-dom";
+    import { RxCross1 } from "react-icons/rx";
 
     const ImportExportReport = () => {
     const navigate = useNavigate();
@@ -18,6 +19,9 @@
         {
             articleId: 7,
             datasetApi: [
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
+            "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-1/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-2/",
             "https://ezexplanation.com/api/intel/article/dataset/custom-logistics-news-3/",
@@ -111,8 +115,11 @@
             {/* Filters */}
             <div className="mb-5 flex justify-between items-center mt-3">
             <div className="flex gap-5">
-                <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
-                All
+                <button
+                className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full border border-black hover:bg-blue-200 transition"
+                onClick={() => navigate("/customlogistics")}
+                >
+                All <RxCross1 size={18} />
                 </button>
                 <button className="inline-flex items-center gap-2 xs:px-2 md:px-4 py-1 bg-white text-black rounded-full border border-black">
                 Recently Updated
